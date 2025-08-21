@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultas - Lic. Anyuri Vasquez</title>
+<meta name="description" content="Envía tus consultas a la Dra. Ana Pérez mediante el formulario de contacto.">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white fixed w-full z-50 shadow-lg h-20">
+  <div class="max-w-7xl mx-auto flex justify-between items-center h-full px-6">
+    <h1 class="text-3xl font-bold">Lic. Anyuri Vasquez</h1>
+    <nav>
+      <ul class="flex gap-6 text-lg font-medium">
+        <li><a href="index.html" class="hover:text-gray-200 transition">Inicio</a></li>
+        <li><a href="quien-soy.html" class="hover:text-gray-200 transition">¿Quién soy?</a></li>
+        <li><a href="servicios.html" class="hover:text-gray-200 transition">Servicios</a></li>
+        <li><a href="agenda.html" class="hover:text-gray-200 transition">Agenda</a></li>
+        <li><a href="foro.html" class="hover:text-gray-200 transition">Consultas</a></li>
+        <li><a href="contacto.html" class="hover:text-gray-200 transition">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="pt-28 px-4 md:px-16 py-12 max-w-2xl mx-auto">
+  <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Formulario de Consultas</h2>
+  <form id="contactForm" class="bg-white p-8 rounded shadow-lg space-y-4">
+    <input type="text" name="name" placeholder="Tu nombre" required class="w-full border p-2 rounded">
+    <input type="email" name="email" placeholder="Tu correo" required class="w-full border p-2 rounded">
+    <textarea name="message" placeholder="Tu consulta" required class="w-full border p-2 rounded"></textarea>
+    <button type="submit" class="bg-blue-700 text-white py-2 px-6 rounded font-semibold hover:bg-blue-800 transition w-full">Enviar Consulta</button>
+  </form>
+</section>
+
+<!-- Script EmailJS común -->
+<script src="js/email.js"></script>
+
+<footer class="bg-white shadow-md py-6 text-center mt-28">
+  <p>&copy; 2025 Lic. Anyuri Vasquez. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>

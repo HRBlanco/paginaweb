@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quién soy? - Lic. Anyuri Vasquez</title>
+  <meta name="description" content="Biografía y enfoque de la Lic. Anyuri Vasquez, psicóloga clínica.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Navbar fija -->
+  <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white fixed w-full z-50 shadow-lg h-20">
+    <div class="max-w-7xl mx-auto flex justify-between items-center h-full px-6">
+      <h1 class="text-3xl font-bold">Lic. Anyuri Vasquez</h1>
+      <nav>
+        <ul class="flex gap-6 text-lg font-medium">
+          <li><a href="index.html" class="hover:text-gray-200 transition">Inicio</a></li>
+          <li><a href="quien-soy.html" class="hover:text-gray-200 transition underline font-semibold">¿Quién soy?</a></li>
+          <li><a href="servicios.html" class="hover:text-gray-200 transition">Servicios</a></li>
+          <li><a href="agenda.html" class="hover:text-gray-200 transition">Agenda</a></li>
+          <li><a href="foro.html" class="hover:text-gray-200 transition">Consultas</a></li>
+          <li><a href="contacto.html" class="hover:text-gray-200 transition">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="pt-36 pb-16 px-4 md:px-16 bg-white">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+      <div class="md:col-span-1">
+        <!-- Contenedor con fondo tipo ejemplo y recorte suave de alto -->
+        <div class="bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400 rounded-2xl shadow-xl p-2 ring-1 ring-gray-400 shadow-inner">
+          <div class="rounded-xl overflow-hidden h-[460px] md:h-[500px]">
+            <img src="img/anyuri.png" alt="Lic. Anyuri Vasquez" class="w-full h-full object-cover object-top">
+          </div>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">¿Quién soy?</h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          Soy la <strong>Lic. Anyuri Vasquez</strong>, psicóloga clínica con especialidad en terapia Gestalt, 
+          aportando una visión humanista donde el foco principal es aprender a gestionar emociones con un acompañamiento 
+          terapéutico dónde nos enfocaremos en brindarte herramientas para afrontar situaciones cotidianas.
+        </p>
+        <div class="flex flex-wrap gap-3 text-sm text-gray-600 mb-6">
+          <span class="bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Psicoterapia Individual</span>
+          <span class="bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Terapia de Pareja</span>
+          <span class="bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Ansiedad y Estrés</span>
+          <span class="bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Autoconocimiento</span>
+        </div>
+        <div class="flex gap-4">
+          <a href="agenda.html" class="bg-blue-700 text-white font-semibold py-3 px-6 rounded hover:bg-blue-800 transition">Reservar cita</a>
+          <a href="servicios.html" class="bg-gray-200 text-gray-800 font-semibold py-3 px-6 rounded hover:bg-gray-300 transition">Ver servicios</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Biografía y formación -->
+  <section class="py-16 px-4 md:px-16">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div>
+        <h3 class="text-2xl font-bold mb-4 text-gray-900">Biografía</h3>
+        <p class="text-gray-700 leading-relaxed">
+          A lo largo de mi práctica he acompañado a infantes, adolescentes y adultos en 
+          procesos terapéuticos de cambio y bienestar. Me apasiona crear espacios seguros donde puedan 
+          expresarse con libertad, comprender lo que sienten y desarrollar estrategias para vivir de forma más 
+          plena aumentando la calidad de vida..
+        </p>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold mb-4 text-gray-900">Formación y enfoque</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Licenciatura en Psicología (Universidad XYZ).</li>
+          <li>Formación en Terapia Cognitivo-Conductual y Terapias Contextuales.</li>
+          <li>Actualización continua en intervención clínica basada en evidencia.</li>
+          <li>Ética profesional y enfoque centrado en la persona.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Llamado a la acción -->
+  <section class="py-12 text-center bg-blue-50">
+    <h3 class="text-2xl font-bold mb-3 text-gray-900">¿Agendamos?</h3>
+    <p class="text-gray-700 mb-6">Revisa mi disponibilidad y envía tu solicitud de reserva.</p>
+    <a href="agenda.html" class="bg-blue-700 text-white font-semibold py-3 px-8 rounded hover:bg-blue-800 transition">Ir a Agenda</a>
+  </section>
+
+  <footer class="bg-white shadow-md py-6 text-center mt-12">
+    <p>&copy; 2025 Lic. Anyuri Vasquez. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
