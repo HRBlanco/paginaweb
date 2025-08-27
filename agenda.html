@@ -101,20 +101,133 @@
       const dd = String(hoy.getDate()).padStart(2,'0');
       const hoyStr = `${yyyy}-${mm}-${dd}`;
       fechaEl.min = hoyStr;
+      // Inicializar min de hora si ya hay una fecha seleccionada al cargar
+      if (horaEl && fechaEl.value > '') {
+        const now = new Date();
+        const isTodayInit = fechaEl.value === hoyStr;
+        if (isTodayInit) {
+          const future = new Date(now.getTime() + 60*60*1000);
+          future.setMinutes(Math.ceil(future.getMinutes()/15)*15, 0, 0);
+          const h = String(future.getHours()).padStart(2,'0');
+          const m = String(future.getMinutes()).padStart(2,'0');
+          horaEl.min = `${h}:${m}`;
+        } else {
+          horaEl.min = '08:00';
+        }
+        // Mostrar aviso si hoy no quedan horarios válidos (min > max)
+        (function manageAvailability(){
+          const maxStr = horaEl.getAttribute('max') || '21:00';
+          const [maxH,maxM] = maxStr.split(':').map(n=>+n||0);
+          const [minH,minM] = (horaEl.min||'00:00').split(':').map(n=>+n||0);
+          const d = new Date(fechaEl.value + 'T00:00:00');
+          const dMin = new Date(d.getFullYear(), d.getMonth(), d.getDate(), minH, minM, 0, 0);
+          const dMax = new Date(d.getFullYear(), d.getMonth(), d.getDate(), maxH, maxM, 0, 0);
+          const avisoId = 'hora_aviso';
+          let aviso = document.getElementById(avisoId);
+          if (!aviso) {
+            aviso = document.createElement('p');
+            aviso.id = avisoId;
+            aviso.className = 'text-sm text-yellow-700 mt-1';
+            // Insertar justo después del input de hora
+            const horaWrapper = horaEl.parentElement;
+            horaWrapper.appendChild(aviso);
+          }
+          if (fechaEl.value === hoyStr && dMin > dMax) {
+            aviso.textContent = 'No hay horarios disponibles hoy. Por favor elige otra fecha.';
+            aviso.style.display = '';
+            horaEl.value = '';
+            horaEl.disabled = true;
+          } else {
+            aviso.textContent = '';
+            aviso.style.display = 'none';
+            horaEl.disabled = false;
+          }
+        })();
+      }
       fechaEl.addEventListener('change', ()=>{
         // Si es hoy, opcionalmente podrías limitar hora mínima a la hora actual redondeada
         if (horaEl && fechaEl.value > '') {
           const now = new Date();
           const isToday = fechaEl.value === hoyStr;
           if (isToday) {
-            const h = String(now.getHours()).padStart(2,'0');
-            const m = String(now.getMinutes()).padStart(2,'0');
+            // Exigir al menos +1 hora desde el momento actual, redondeado a 15 minutos
+            const future = new Date(now.getTime() + 60*60*1000);
+            future.setMinutes(Math.ceil(future.getMinutes()/15)*15, 0, 0);
+            const h = String(future.getHours()).padStart(2,'0');
+            const m = String(future.getMinutes()).padStart(2,'0');
             horaEl.min = `${h}:${m}`;
           } else {
-            horaEl.removeAttribute('min');
+            // Mantener mínimo a las 08:00 para fechas futuras
+            horaEl.min = '08:00';
           }
+          // Actualizar aviso según disponibilidad
+          const maxStr = horaEl.getAttribute('max') || '21:00';
+          const [maxH,maxM] = maxStr.split(':').map(n=>+n||0);
+          const [minH,minM] = (horaEl.min||'00:00').split(':').map(n=>+n||0);
+          const d = new Date(fechaEl.value + 'T00:00:00');
+          const dMin = new Date(d.getFullYear(), d.getMonth(), d.getDate(), minH, minM, 0, 0);
+          const dMax = new Date(d.getFullYear(), d.getMonth(), d.getDate(), maxH, maxM, 0, 0);
+          const aviso = document.getElementById('hora_aviso');
+          if (fechaEl.value === hoyStr && dMin > dMax) {
+            if (aviso) { aviso.textContent = 'No hay horarios disponibles hoy. Por favor elige otra fecha.'; aviso.style.display = ''; }
+            horaEl.value = '';
+            horaEl.disabled = true;
+          } else {
+            if (aviso) { aviso.textContent = ''; aviso.style.display = 'none'; }
+            horaEl.disabled = false;
+          }
+          // Validar si la hora escrita manualmente es válida tras cambiar fecha
+          if (typeof validateHoraManual === 'function') validateHoraManual();
         }
       });
+
+      // Validación cuando el usuario escribe manualmente una hora
+      function validateHoraManual(){
+        if (!horaEl || !fechaEl.value) return;
+        const aviso = document.getElementById('hora_aviso');
+        const maxStr = horaEl.getAttribute('max') || '21:00';
+        const [maxH,maxM] = maxStr.split(':').map(n=>+n||0);
+        const d = new Date(fechaEl.value + 'T00:00:00');
+        const [minH,minM] = (horaEl.min||'00:00').split(':').map(n=>+n||0);
+        const dMin = new Date(d.getFullYear(), d.getMonth(), d.getDate(), minH, minM, 0, 0);
+        const dMax = new Date(d.getFullYear(), d.getMonth(), d.getDate(), maxH, maxM, 0, 0);
+        const val = horaEl.value;
+        if (!val){ if (aviso){ aviso.textContent=''; aviso.style.display='none'; } horaEl.setCustomValidity(''); return; }
+        const [vh,vm] = val.split(':').map(n=>+n||0);
+        const dVal = new Date(d.getFullYear(), d.getMonth(), d.getDate(), vh, vm, 0, 0);
+
+        // Caso: hoy sin horarios disponibles
+        if (fechaEl.value === hoyStr && dMin > dMax){
+          if (aviso){ aviso.textContent = 'No hay horarios disponibles hoy. Por favor elige otra fecha.'; aviso.style.display=''; }
+          horaEl.setCustomValidity('No hay horarios disponibles hoy.');
+          return;
+        }
+
+        // Caso: antes del mínimo permitido
+        if (dVal < dMin){
+          const hh = String(dMin.getHours()).padStart(2,'0');
+          const mm = String(dMin.getMinutes()).padStart(2,'0');
+          if (aviso){ aviso.textContent = 'Para reservas de hoy, selecciona una hora a partir de las '+hh+':'+mm+'.'; aviso.style.display=''; }
+          horaEl.setCustomValidity('Selecciona a partir de las '+hh+':'+mm);
+          return;
+        }
+
+        // Caso: después del máximo permitido
+        if (dVal > dMax){
+          if (aviso){ aviso.textContent = 'La hora debe estar dentro del horario de atención.'; aviso.style.display=''; }
+          horaEl.setCustomValidity('Hora fuera del horario de atención');
+          return;
+        }
+
+        // Válido
+        if (aviso){ aviso.textContent=''; aviso.style.display='none'; }
+        horaEl.setCustomValidity('');
+      }
+
+      if (horaEl){
+        horaEl.addEventListener('input', validateHoraManual);
+        horaEl.addEventListener('change', validateHoraManual);
+      }
     }
 
     // Feedback visual simple

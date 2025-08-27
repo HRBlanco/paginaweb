@@ -12,3 +12,12 @@ a {
 .navbar a:hover {
   color: #e0e7ff;
 }
+
+/* Utilidad: ocultar scrollbar en contenedores con overflow (para menú horizontal móvil) */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

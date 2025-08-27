@@ -58,6 +58,8 @@
     function isWeekend(date){ var d = date.getDay(); return d === 0 || d === 6; }
     function todayISO(){ var n = new Date(); var mm = String(n.getMonth()+1).padStart(2,'0'); var dd = String(n.getDate()).padStart(2,'0'); return n.getFullYear()+"-"+mm+"-"+dd; }
     function generateNonce(){ try{ var u=new Uint8Array(16); crypto.getRandomValues(u); return Array.from(u).map(b=>b.toString(16).padStart(2,'0')).join(''); }catch(e){ return Date.now().toString(16)+Math.random().toString(16).slice(2); } }
+    function roundUpTo15(date){ var d=new Date(date.getTime()); d.setMinutes(Math.ceil(d.getMinutes()/15)*15,0,0); return d; }
+    function timeOnDate(date, hm){ var p = parseHM(hm); return new Date(date.getFullYear(), date.getMonth(), date.getDate(), p.h, p.m, 0, 0); }
 
     // Opcional: Cargar configuración desde Apps Script (si existe y deseas usarla)
     // Si no quieres depender del backend, esto se ignora sin problema.
@@ -91,6 +93,19 @@
       if (CONFIG.bloquear_finde && isWeekend(dateObj)) { alert('No se atiende fines de semana. Elige un día hábil.'); return; }
       if (CONFIG.no_laborables && CONFIG.no_laborables.indexOf(fecha) !== -1) { alert('La fecha seleccionada está marcada como no laborable.'); return; }
       if (!inBusinessHours(dateObj, hora, CONFIG.jornada)) { alert('La hora debe estar dentro de la jornada ('+CONFIG.jornada.inicio+' a '+CONFIG.jornada.fin+').'); return; }
+
+      // Regla adicional: si la reserva es para HOY, exigir al menos +1 hora desde ahora (redondeado a 15min)
+      if (fecha === todayISO()) {
+        var now = new Date();
+        var threshold = roundUpTo15(new Date(now.getTime() + 60*60*1000));
+        var chosen = timeOnDate(dateObj, hora);
+        if (chosen < threshold) {
+          var hh = String(threshold.getHours()).padStart(2,'0');
+          var mm = String(threshold.getMinutes()).padStart(2,'0');
+          alert('Para reservas de hoy, selecciona una hora a partir de las '+hh+':'+mm+'.');
+          return;
+        }
+      }
 
       // Seguridad: expira en 2 horas y nonce de uso único (Apps Script los validará)
       var exp = Date.now() + 2 * 60 * 60 * 1000; // +2h en ms
