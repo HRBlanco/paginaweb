@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios - Lic. Anyuri Vasquez</title>
+<meta name="description" content="Servicios de psicología: consulta individual, terapia de pareja e infantil con la Lic. Anyuri Vasquez.">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../css/styles.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white fixed w-full z-50 shadow-lg h-16 md:h-20">
+  <div class="max-w-7xl mx-auto flex justify-between items-center h-full px-4 md:px-6">
+    <h1 class="text-xl md:text-3xl font-bold whitespace-nowrap">Lic. Anyuri Vasquez</h1>
+    <!-- Botón menú (solo móvil) -->
+    <button id="menu-toggle" class="md:hidden ml-2 p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+    <nav class="ml-4 flex-1 flex justify-end">
+      <ul id="primary-nav" class="hidden md:flex w-full md:justify-end gap-4 md:gap-6 text-sm md:text-lg font-medium md:overflow-x-visible overflow-x-auto no-scrollbar whitespace-nowrap">
+        <li><a href="../" class="hover:text-gray-200 transition">Inicio</a></li>
+        <li><a href="../quien-soy" class="hover:text-gray-200 transition">¿Quién soy?</a></li>
+        <li><a href="../servicios" class="hover:text-gray-200 transition">Servicios</a></li>
+        <li><a href="../agenda" class="hover:text-gray-200 transition">Agenda</a></li>
+        <li><a href="../foro" class="hover:text-gray-200 transition">Consultas</a></li>
+        <li><a href="../contacto" class="hover:text-gray-200 transition">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="pt-28 px-4 md:px-16 py-12">
+  <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Nuestros Servicios Profesionales</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition transform hover:scale-105 text-center">
+      <i class="fas fa-user text-blue-800 text-4xl mb-4"></i>
+      <h4 class="text-xl font-semibold mb-2">Consulta Individual</h4>
+      <p class="text-gray-700 mb-4">La terapia individual psicológica es un proceso terapéutico que se lleva a cabo en un ambiente de confianza y confidencialidad. El objetivo principal es ayudar al paciente a comprenderse mejor a sí mismo, sus emociones, pensamientos y comportamientos,  desarrollar estrategias para afrontar situaciones difíciles y mejorar su bienestar general. 
+Tiene un tiempo aproximado de 50 min cada sesión con un valor de 30$.</p>
+    </div>
+    <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition transform hover:scale-105 text-center">
+      <i class="fas fa-users text-blue-800 text-4xl mb-4"></i>
+      <h4 class="text-xl font-semibold mb-2">Terapia de Pareja</h4>
+      <p class="text-gray-700 mb-4">La terapia de pareja busca ayudar a las relaciones a superar conflictos, mejorar la comunicación y fortalecer el vínculo emocional entre los miembros de la pareja. En esencia, es un proceso terapéutico que busca crear un espacio seguro para que las parejas puedan expresar sus inquietudes, aprender a resolver problemas de manera constructiva, formar una relación más saludable y satisfactoria. 
+Cada sesión cuenta con una duración de una hora y media aproximadamente. 
+Con un valor de 55$.</p>
+    </div>
+    <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition transform hover:scale-105 text-center">
+      <i class="fas fa-child text-blue-800 text-4xl mb-4"></i>
+      <h4 class="text-xl font-semibold mb-2">Terapia Infantil</h4>
+      <p class="text-gray-700 mb-4">La terapia infanto-juvenil sirve para ayudar a infantes y adolescentes a desarrollar habilidades emocionales y conductuales saludables, así como para abordar problemas emocionales y de comportamiento. Facilita el correcto desarrollo psicológico y emocional de los menores, promoviendo un ajuste social adecuado en cada etapa de su crecimiento, consiste en un abordaje completo donde se solicita la participación de los padres o cuidadores para brindar herramientas, mejorando el ambiente familiar en el hogar. 
+Tiene una duración de 60 minutos. 
+Con un valor de 35$.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-white shadow-md py-6 text-center mt-12">
+  <p>&copy; 2025 Lic. Anyuri Vasquez. Todos los derechos reservados.</p>
+</footer>
+
+<!-- Script: toggle del menú móvil -->
+<script>
+  (function(){
+    const btn = document.getElementById('menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const mobileClasses = ['absolute','top-16','left-0','w-full','bg-blue-800','flex','flex-col','gap-2','px-4','py-3','shadow-md','z-50'];
+    const linkMobileClasses = ['text-white','font-semibold','py-2'];
+    function cleanupMobileStyles(){
+      nav.classList.remove(...mobileClasses);
+      nav.querySelectorAll('a').forEach(a=>a.classList.remove(...linkMobileClasses));
+    }
+    if(btn && nav){
+      btn.addEventListener('click', function(){
+        const wasHidden = nav.classList.contains('hidden');
+        nav.classList.toggle('hidden');
+        if (window.innerWidth < 768) {
+          if (wasHidden) {
+            nav.classList.add(...mobileClasses);
+            nav.querySelectorAll('a').forEach(a=>a.classList.add(...linkMobileClasses));
+          } else {
+            cleanupMobileStyles();
+          }
+        }
+        this.setAttribute('aria-expanded', (!nav.classList.contains('hidden')).toString());
+      });
+      const mq = window.matchMedia('(min-width: 768px)');
+      const sync = () => { if(mq.matches) { nav.classList.remove('hidden'); cleanupMobileStyles(); } }
+      mq.addEventListener ? mq.addEventListener('change', sync) : mq.addListener(sync);
+      sync();
+    }
+  })();
+</script>
+
+</body>
+</html>

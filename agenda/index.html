@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda - Lic. Anyuri Vasquez</title>
+<meta name="description" content="Agenda de la Lic. Anyuri Vasquez Revisa la disponibilidad en Google Calendar y envía una solicitud de reserva.">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../css/styles.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white fixed w-full z-50 shadow-lg h-16 md:h-20">
+  <div class="max-w-7xl mx-auto flex justify-between items-center h-full px-4 md:px-6">
+    <h1 class="text-xl md:text-3xl font-bold whitespace-nowrap">Lic. Anyuri Vasquez</h1>
+    <!-- Botón menú (solo móvil) -->
+    <button id="menu-toggle" class="md:hidden ml-2 p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+    <nav class="ml-4 flex-1 flex justify-end">
+      <ul id="primary-nav" class="hidden md:flex w-full md:justify-end gap-4 md:gap-6 text-sm md:text-lg font-medium md:overflow-x-visible overflow-x-auto no-scrollbar whitespace-nowrap">
+        <li><a href="../" class="hover:text-gray-200 transition">Inicio</a></li>
+        <li><a href="../quien-soy" class="hover:text-gray-200 transition">¿Quién soy?</a></li>
+        <li><a href="../servicios" class="hover:text-gray-200 transition">Servicios</a></li>
+        <li><a href="../agenda" class="hover:text-gray-200 transition">Agenda</a></li>
+        <li><a href="../foro" class="hover:text-gray-200 transition">Consultas</a></li>
+        <li><a href="../contacto" class="hover:text-gray-200 transition">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="pt-28 px-4 md:px-16 py-12">
+  <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Reserva tu cita</h2>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    <!-- Calendario de disponibilidad (Google Calendar embed) -->
+    <div class="bg-white p-4 rounded shadow-lg">
+      <h3 class="text-xl font-semibold mb-4">Disponibilidad</h3>
+      <p class="text-sm text-gray-600 mb-3">Consulta los horarios ocupados y propón tu fecha y hora en el formulario.</p>
+      <!-- Reemplaza el src con el enlace de inserción de tu Google Calendar público -->
+      <div class="aspect-video">
+        <iframe src="https://calendar.google.com/calendar/embed?src=2d2a6e4e9312a51b6a8fe9dedffa242b0eff81461e1bdb03181a69025f9f01d4%40group.calendar.google.com&ctz=America%2FSantiago&mode=WEEK&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&showDate=0&showNav=0&showWeekends=1" style="border:0" width="100%" height="700" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+
+    <!-- Formulario de solicitud (EmailJS) -->
+    <div class="bg-white p-8 rounded shadow-lg">
+      <h3 class="text-xl font-semibold mb-4">Solicitar reserva</h3>
+      <form id="reservaForm" class="space-y-4" data-inicio="08:00" data-fin="21:00" data-bloquear-finde="false">
+        <!-- Enlaces para gestión de reserva (se completan en js/email.js) -->
+        <input type="hidden" name="confirm_url" id="confirm_url">
+        <input type="hidden" name="reject_url" id="reject_url">
+        <input type="hidden" name="postpone_url" id="postpone_url">
+        <div>
+          <label class="block mb-1 font-semibold" for="nombre">Nombre completo</label>
+          <input id="nombre" name="nombre" type="text" required class="w-full border p-2 rounded" placeholder="Tu nombre">
+        </div>
+        <div>
+          <label class="block mb-1 font-semibold" for="email">Correo</label>
+          <input id="email" name="email" type="email" required class="w-full border p-2 rounded" placeholder="tu@correo.com">
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block mb-1 font-semibold" for="fecha">Fecha preferida</label>
+            <input id="fecha" name="fecha" type="date" required class="w-full border p-2 rounded">
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold" for="hora">Hora preferida</label>
+            <input id="hora" name="hora" type="time" required class="w-full border p-2 rounded" min="08:00" max="21:00" step="900">
+            <p class="text-xs text-gray-500 mt-1">Horario de atención: 08:00 a 21:00</p>
+          </div>
+        </div>
+        <div>
+          <label class="block mb-1 font-semibold" for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" class="w-full border p-2 rounded" rows="4" placeholder="Cuéntanos brevemente tu motivo de consulta"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-700 text-white py-2 px-6 rounded font-semibold hover:bg-blue-800 transition w-full">Enviar solicitud</button>
+        <p class="text-sm text-gray-600">Procesaremos tu solicitud y te contactaremos para confirmar la hora.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Se elimina modal de confirmación (no necesario con EmailJS/Calendly) -->
+
+<!-- Script EmailJS común -->
+<script src="js/email.js"></script>
+
+<!-- Validación básica de fecha/hora y feedback visual -->
+<script>
+  (function(){
+    const fechaEl = document.getElementById('fecha');
+    const horaEl = document.getElementById('hora');
+    if (fechaEl) {
+      const hoy = new Date();
+      const yyyy = hoy.getFullYear();
+      const mm = String(hoy.getMonth()+1).padStart(2,'0');
+      const dd = String(hoy.getDate()).padStart(2,'0');
+      const hoyStr = `${yyyy}-${mm}-${dd}`;
+      fechaEl.min = hoyStr;
+      // Inicializar min de hora si ya hay una fecha seleccionada al cargar
+      if (horaEl && fechaEl.value > '') {
+        const now = new Date();
+        const isTodayInit = fechaEl.value === hoyStr;
+        if (isTodayInit) {
+          const future = new Date(now.getTime() + 60*60*1000);
+          future.setMinutes(Math.ceil(future.getMinutes()/15)*15, 0, 0);
+          const h = String(future.getHours()).padStart(2,'0');
+          const m = String(future.getMinutes()).padStart(2,'0');
+          horaEl.min = `${h}:${m}`;
+        } else {
+          horaEl.min = '08:00';
+        }
+        // Mostrar aviso si hoy no quedan horarios válidos (min > max)
+        (function manageAvailability(){
+          const maxStr = horaEl.getAttribute('max') || '21:00';
+          const [maxH,maxM] = maxStr.split(':').map(n=>+n||0);
+          const [minH,minM] = (horaEl.min||'00:00').split(':').map(n=>+n||0);
+          const d = new Date(fechaEl.value + 'T00:00:00');
+          const dMin = new Date(d.getFullYear(), d.getMonth(), d.getDate(), minH, minM, 0, 0);
+          const dMax = new Date(d.getFullYear(), d.getMonth(), d.getDate(), maxH, maxM, 0, 0);
+          const avisoId = 'hora_aviso';
+          let aviso = document.getElementById(avisoId);
+          if (!aviso) {
+            aviso = document.createElement('p');
+            aviso.id = avisoId;
+            aviso.className = 'text-sm text-yellow-700 mt-1';
+            // Insertar justo después del input de hora
+            const horaWrapper = horaEl.parentElement;
+            horaWrapper.appendChild(aviso);
+          }
+          if (fechaEl.value === hoyStr && dMin > dMax) {
+            aviso.textContent = 'No hay horarios disponibles hoy. Por favor elige otra fecha.';
+            aviso.style.display = '';
+            horaEl.value = '';
+            horaEl.disabled = true;
+          } else {
+            aviso.textContent = '';
+            aviso.style.display = 'none';
+            horaEl.disabled = false;
+          }
+        })();
+      }
+      fechaEl.addEventListener('change', ()=>{
+        // Si es hoy, opcionalmente podrías limitar hora mínima a la hora actual redondeada
+        if (horaEl && fechaEl.value > '') {
+          const now = new Date();
+          const isToday = fechaEl.value === hoyStr;
+          if (isToday) {
+            // Exigir al menos +1 hora desde el momento actual, redondeado a 15 minutos
+            const future = new Date(now.getTime() + 60*60*1000);
+            future.setMinutes(Math.ceil(future.getMinutes()/15)*15, 0, 0);
+            const h = String(future.getHours()).padStart(2,'0');
+            const m = String(future.getMinutes()).padStart(2,'0');
+            horaEl.min = `${h}:${m}`;
+          } else {
+            // Mantener mínimo a las 08:00 para fechas futuras
+            horaEl.min = '08:00';
+          }
+          // Actualizar aviso según disponibilidad
+          const maxStr = horaEl.getAttribute('max') || '21:00';
+          const [maxH,maxM] = maxStr.split(':').map(n=>+n||0);
+          const [minH,minM] = (horaEl.min||'00:00').split(':').map(n=>+n||0);
+          const d = new Date(fechaEl.value + 'T00:00:00');
+          const dMin = new Date(d.getFullYear(), d.getMonth(), d.getDate(), minH, minM, 0, 0);
+          const dMax = new Date(d.getFullYear(), d.getMonth(), d.getDate(), maxH, maxM, 0, 0);
+          const aviso = document.getElementById('hora_aviso');
+          if (fechaEl.value === hoyStr && dMin > dMax) {
+            if (aviso) { aviso.textContent = 'No hay horarios disponibles hoy. Por favor elige otra fecha.'; aviso.style.display = ''; }
+            horaEl.value = '';
+            horaEl.disabled = true;
+          } else {
+            if (aviso) { aviso.textContent = ''; aviso.style.display = 'none'; }
+            horaEl.disabled = false;
+          }
+          // Validar si la hora escrita manualmente es válida tras cambiar fecha
+          if (typeof validateHoraManual === 'function') validateHoraManual();
+        }
+      });
+
+      // Validación cuando el usuario escribe manualmente una hora
+      function validateHoraManual(){
+        if (!horaEl || !fechaEl.value) return;
+        const aviso = document.getElementById('hora_aviso');
+        const maxStr = horaEl.getAttribute('max') || '21:00';
+        const [maxH,maxM] = maxStr.split(':').map(n=>+n||0);
+        const d = new Date(fechaEl.value + 'T00:00:00');
+        const [minH,minM] = (horaEl.min||'00:00').split(':').map(n=>+n||0);
+        const dMin = new Date(d.getFullYear(), d.getMonth(), d.getDate(), minH, minM, 0, 0);
+        const dMax = new Date(d.getFullYear(), d.getMonth(), d.getDate(), maxH, maxM, 0, 0);
+        const val = horaEl.value;
+        if (!val){ if (aviso){ aviso.textContent=''; aviso.style.display='none'; } horaEl.setCustomValidity(''); return; }
+        const [vh,vm] = val.split(':').map(n=>+n||0);
+        const dVal = new Date(d.getFullYear(), d.getMonth(), d.getDate(), vh, vm, 0, 0);
+
+        // Caso: hoy sin horarios disponibles
+        if (fechaEl.value === hoyStr && dMin > dMax){
+          if (aviso){ aviso.textContent = 'No hay horarios disponibles hoy. Por favor elige otra fecha.'; aviso.style.display=''; }
+          horaEl.setCustomValidity('No hay horarios disponibles hoy.');
+          return;
+        }
+
+        // Caso: antes del mínimo permitido
+        if (dVal < dMin){
+          const hh = String(dMin.getHours()).padStart(2,'0');
+          const mm = String(dMin.getMinutes()).padStart(2,'0');
+          if (aviso){ aviso.textContent = 'Para reservas de hoy, selecciona una hora a partir de las '+hh+':'+mm+'.'; aviso.style.display=''; }
+          horaEl.setCustomValidity('Selecciona a partir de las '+hh+':'+mm);
+          return;
+        }
+
+        // Caso: después del máximo permitido
+        if (dVal > dMax){
+          if (aviso){ aviso.textContent = 'La hora debe estar dentro del horario de atención.'; aviso.style.display=''; }
+          horaEl.setCustomValidity('Hora fuera del horario de atención');
+          return;
+        }
+
+        // Válido
+        if (aviso){ aviso.textContent=''; aviso.style.display='none'; }
+        horaEl.setCustomValidity('');
+      }
+
+      if (horaEl){
+        horaEl.addEventListener('input', validateHoraManual);
+        horaEl.addEventListener('change', validateHoraManual);
+      }
+    }
+
+    // Feedback visual simple
+    const form = document.getElementById('reservaForm');
+    if (form) {
+      form.addEventListener('submit', function(){
+        const inputs = form.querySelectorAll('input[required], textarea[required]');
+        inputs.forEach(el=>{
+          if (!el.checkValidity()) {
+            el.classList.add('ring-2','ring-red-500');
+          } else {
+            el.classList.remove('ring-2','ring-red-500');
+          }
+        });
+      });
+      form.addEventListener('input', function(e){
+        const el = e.target;
+        if (el && el.checkValidity) {
+          if (!el.checkValidity()) {
+            el.classList.add('ring-2','ring-red-500');
+          } else {
+            el.classList.remove('ring-2','ring-red-500');
+          }
+        }
+      });
+    }
+  })();
+  </script>
+
+<footer class="bg-white shadow-md py-6 text-center mt-12">
+  <p>&copy; 2025 Lic. Anyuri Vasquez. Todos los derechos reservados.</p>
+</footer>
+
+<!-- Script: toggle del menú móvil -->
+<script>
+  (function(){
+    const btn = document.getElementById('menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const mobileClasses = ['absolute','top-16','left-0','w-full','bg-blue-800','flex','flex-col','gap-2','px-4','py-3','shadow-md','z-50'];
+    const linkMobileClasses = ['text-white','font-semibold','py-2'];
+    function cleanupMobileStyles(){
+      nav.classList.remove(...mobileClasses);
+      nav.querySelectorAll('a').forEach(a=>a.classList.remove(...linkMobileClasses));
+    }
+    if(btn && nav){
+      btn.addEventListener('click', function(){
+        const wasHidden = nav.classList.contains('hidden');
+        nav.classList.toggle('hidden');
+        if (window.innerWidth < 768) {
+          if (wasHidden) {
+            nav.classList.add(...mobileClasses);
+            nav.querySelectorAll('a').forEach(a=>a.classList.add(...linkMobileClasses));
+          } else {
+            cleanupMobileStyles();
+          }
+        }
+        this.setAttribute('aria-expanded', (!nav.classList.contains('hidden')).toString());
+      });
+      const mq = window.matchMedia('(min-width: 768px)');
+      const sync = () => { if(mq.matches) { nav.classList.remove('hidden'); cleanupMobileStyles(); } }
+      mq.addEventListener ? mq.addEventListener('change', sync) : mq.addListener(sync);
+      sync();
+    }
+  })();
+</script>
+
+</body>
+</html>
