@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -6,7 +6,12 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Método no permitido' });
 
-  const { email } = req.body || {};
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch (_) { body = {}; }
+  }
+
+  const email = (body && body.email) ? body.email.trim() : '';
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ error: 'Correo inválido' });
   }
@@ -19,10 +24,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({
-        email,
-        updateEnabled: true
-      })
+      body: JSON.stringify({ email, updateEnabled: true })
     });
 
     if (response.status === 201 || response.status === 204) {
@@ -30,7 +32,6 @@ export default async function handler(req, res) {
     }
 
     const data = await response.json().catch(() => ({}));
-    // 400 con code DUPLICATE_PARAMETER = ya estaba suscrito, igual es OK
     if (data.code === 'duplicate_parameter') {
       return res.status(200).json({ ok: true, already: true });
     }
@@ -39,4 +40,4 @@ export default async function handler(req, res) {
   } catch (err) {
     return res.status(500).json({ error: 'Error de conexión' });
   }
-}
+};
