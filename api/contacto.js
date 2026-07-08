@@ -43,7 +43,7 @@ module.exports = async function handler(req, res) {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        sender: { name: 'Web Anyuri Vásquez', email: 'hola@anyurivasquez.com' },
+        sender: { name: 'Web Anyuri Vásquez', email: 'anyuri.vasquez99@gmail.com' },
         to: [{ email: 'anyuri.vasquez99@gmail.com', name: 'Lic. Anyuri Vásquez' }],
         subject: `Consulta de ${name}`,
         htmlContent
