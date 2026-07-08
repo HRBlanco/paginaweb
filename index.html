@@ -3,94 +3,307 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lic. Anyuri Vasquez - Psicología Profesional</title>
-<meta name="description" content="Atención psicológica profesional con la Lic.Anyuri Vasquez. Terapia individual, de pareja e infantil. Reserva tu cita online.">
-<link rel="icon" href="/favicon.ico">
+<meta name="color-scheme" content="light">
+<title>Lic. Anyuri Vásquez - Psicología Profesional</title>
+<meta name="description" content="Atención psicológica profesional con la Lic. Anyuri Vásquez. Terapia individual, de pareja, infantil y para migrantes. Reserva tu cita online.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="js/tailwind-config.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-[#fffaf9] text-navy-900 font-sans">
 
-<!-- Navbar fija -->
-<header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white fixed w-full z-50 shadow-lg h-16 md:h-20">
-  <div class="max-w-7xl mx-auto flex justify-between items-center h-full px-4 md:px-6">
-    <h1 class="text-xl md:text-3xl font-bold whitespace-nowrap">Lic. Anyuri Vasquez</h1>
-    <!-- Botón menú (solo móvil) -->
-    <button id="menu-toggle" class="md:hidden ml-2 p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+  <div class="max-w-7xl mx-auto flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <svg viewBox="0 0 48 48" class="w-10 h-10 md:w-11 md:h-11 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="24" cy="24" r="21" opacity="0.45"/>
+        <path d="M24 32c0-9 6-15 12-16-1 9-6 14-12 16z"/>
+        <path d="M24 32c0-7-5-12-10-13 1 7 5 11 10 13z"/>
+        <path d="M24 32V20" stroke-linecap="round"/>
+      </svg>
+      <span class="leading-tight">
+        <span class="block font-display text-base md:text-xl font-bold text-navy-800 whitespace-nowrap">Lic. Anyuri Vásquez</span>
+        <span class="block text-[9px] md:text-[11px] uppercase tracking-[0.18em] text-rose-400 font-semibold">Psicóloga Clínica</span>
+      </span>
+    </a>
+    <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-navy-800 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-300" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
     </button>
-    <nav class="ml-4 flex-1 flex justify-end">
-      <ul id="primary-nav" class="hidden md:flex w-full md:justify-end gap-4 md:gap-6 text-sm md:text-lg font-medium md:overflow-x-visible overflow-x-auto no-scrollbar whitespace-nowrap">
-        <li><a href="/" class="hover:text-gray-200 transition">Inicio</a></li>
-        <li><a href="/quien-soy" class="hover:text-gray-200 transition">¿Quién soy?</a></li>
-        <li><a href="/servicios" class="hover:text-gray-200 transition">Servicios</a></li>
-        <li><a href="/agenda" class="hover:text-gray-200 transition">Agenda</a></li>
-        <li><a href="/foro" class="hover:text-gray-200 transition">Consultas</a></li>
-        <li><a href="/contacto" class="hover:text-gray-200 transition">Contacto</a></li>
+    <nav class="ml-4">
+      <ul id="primary-nav" class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-navy-700">
+        <li><a href="index.html" class="text-rose-500 font-semibold">Inicio</a></li>
+        <li><a href="quien-soy.html" class="hover:text-rose-500 transition">Sobre mí</a></li>
+        <li><a href="servicios.html" class="hover:text-rose-500 transition">Servicios</a></li>
+        <li><a href="para-migrantes.html" class="hover:text-rose-500 transition">Para migrantes</a></li>
+        <li><a href="blog.html" class="hover:text-rose-500 transition">Blog</a></li>
+        <li><a href="contacto.html" class="hover:text-rose-500 transition">Contacto</a></li>
+        <li><a href="agenda.html" class="btn-cta inline-flex items-center gap-2 bg-rose-400 hover:bg-rose-500 text-white font-semibold py-2.5 px-5 rounded-full shadow-sm transition whitespace-nowrap"><i class="far fa-calendar-alt"></i> Reservar cita</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <!-- Hero -->
-<section class="bg-gradient-to-r from-blue-50 to-blue-100 pt-28 pb-36 text-center">
-  <h2 class="text-5xl font-bold text-blue-900 mb-4">Apoyo Psicológico Profesional</h2>
-  <p class="text-lg text-gray-700 mb-6 max-w-xl mx-auto">
-    Confidencialidad, cercanía y acompañamiento para mejorar tu bienestar emocional.
-  </p>
-  <div class="flex justify-center gap-4">
-    <a href="agenda.html" class="bg-blue-700 text-white font-semibold py-3 px-8 rounded hover:bg-blue-800 transition">Reservar Cita</a>
-    <a href="servicios.html" class="bg-gray-200 text-gray-800 font-semibold py-3 px-8 rounded hover:bg-gray-300 transition">Ver Servicios</a>
-  </div>
-</section>
-
-<!-- Resumen de Servicios -->
-<section class="py-20 px-4 md:px-16">
-  <h3 class="text-4xl font-bold text-center mb-12 text-gray-800">Servicios</h3>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition transform hover:scale-105 text-center">
-      <i class="fas fa-user text-blue-800 text-4xl mb-4"></i>
-      <h4 class="text-xl font-semibold mb-2">Consulta Individual</h4>
-      <p class="text-gray-700 mb-4">Apoyo personalizado para tus necesidades emocionales y psicológicas.</p>
-      <a href="servicios.html" class="text-blue-700 font-semibold hover:underline">Más info</a>
+<section class="bg-gradient-to-br from-rose-50 via-white to-white py-14 md:py-20 px-4 md:px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h1 class="font-display text-4xl md:text-[2.75rem] leading-tight font-bold text-navy-800 mb-5">Acompañamiento emocional para tu bienestar integral <span class="text-rose-400">&#10084;</span></h1>
+      <p class="text-lg text-navy-700/80 mb-7 max-w-md">
+        Te ofrezco un espacio seguro, confidencial y cercano para ayudarte a gestionar la ansiedad, el estrés y los desafíos de la vida.
+      </p>
+      <div class="flex flex-wrap gap-4 mb-6">
+        <a href="agenda.html" class="inline-flex items-center gap-2 bg-rose-400 hover:bg-rose-500 text-white font-semibold py-3 px-7 rounded-full shadow-sm transition"><i class="far fa-calendar-alt"></i> Reservar mi primera sesión</a>
+        <a href="quien-soy.html" class="bg-white border border-rose-200 text-navy-800 font-semibold py-3 px-7 rounded-full hover:bg-rose-50 transition">Conocer más</a>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 text-sm text-navy-700/70">
+        <svg viewBox="0 0 24 24" class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Atención 100% online</span>
+        <span class="text-rose-300">|</span>
+        <span>Confidencial</span>
+        <span class="text-rose-300">|</span>
+        <span>Profesional</span>
+      </div>
     </div>
-    <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition transform hover:scale-105 text-center">
-      <i class="fas fa-users text-blue-800 text-4xl mb-4"></i>
-      <h4 class="text-xl font-semibold mb-2">Terapia de Pareja</h4>
-      <p class="text-gray-700 mb-4">Mejorar la comunicación y resolver conflictos en la relación.</p>
-      <a href="servicios.html" class="text-blue-700 font-semibold hover:underline">Más info</a>
-    </div>
-    <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition transform hover:scale-105 text-center">
-      <i class="fas fa-child text-blue-800 text-4xl mb-4"></i>
-      <h4 class="text-xl font-semibold mb-2">Terapia Infantil</h4>
-      <p class="text-gray-700 mb-4">Apoyo a niños y adolescentes para su desarrollo emocional.</p>
-      <a href="servicios.html" class="text-blue-700 font-semibold hover:underline">Más info</a>
+    <div class="relative">
+      <div class="rounded-[2rem] overflow-hidden shadow-xl">
+        <img src="img/hero-home.jpg" alt="Lic. Anyuri Vásquez en su consultorio" class="w-full h-[420px] md:h-[480px] object-cover" onerror="this.closest('section').querySelector('.img-fallback')?.classList.remove('hidden'); this.classList.add('hidden')">
+      </div>
+      <div class="img-fallback hidden rounded-[2rem] h-[420px] md:h-[480px] bg-gradient-to-br from-rose-100 to-rose-50 items-center justify-center text-rose-300 text-sm font-medium flex">
+        Coloca img/hero-home.jpg
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Redes sociales -->
-<section class="py-16 bg-gray-50">
-  <div class="text-center mb-6">
-    <h4 class="text-2xl font-bold text-gray-800">Sígueme en redes</h4>
-    <p class="text-gray-600">Conecta conmigo para contenido y novedades</p>
+<!-- ¿Cómo puedo ayudarte? -->
+<section class="bg-rose-50 py-16 md:py-20 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-center text-navy-800">¿Cómo puedo ayudarte?</h2>
+    <div class="flex items-center justify-center gap-2 mt-2 mb-10">
+      <span class="h-px w-10 bg-rose-300"></span>
+      <i class="fas fa-heart text-rose-300 text-xs"></i>
+      <span class="h-px w-10 bg-rose-300"></span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div class="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3a3 3 0 0 0-3 3 3 3 0 0 0-1 5.83V14a3 3 0 0 0 3 3h.17A3 3 0 0 0 11 19.83V21M15 3a3 3 0 0 1 3 3 3 3 0 0 1 1 5.83V14a3 3 0 0 1-3 3h-.17A3 3 0 0 1 13 19.83V21M12 3v18"/></svg>
+        </div>
+        <h3 class="font-display text-sm md:text-base font-semibold text-navy-800 mb-1">Ansiedad y estrés</h3>
+        <p class="text-xs md:text-sm text-navy-700/70">Aprende a manejar la ansiedad, el estrés y recuperar tu calma.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+        </div>
+        <h3 class="font-display text-sm md:text-base font-semibold text-navy-800 mb-1">Relaciones de pareja</h3>
+        <p class="text-xs md:text-sm text-navy-700/70">Mejora la comunicación y construye relaciones más sanas y felices.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.3"/><path d="M5 20c0-3.6 3-6.2 7-6.2s7 2.6 7 6.2"/></svg>
+        </div>
+        <h3 class="font-display text-sm md:text-base font-semibold text-navy-800 mb-1">Autoestima</h3>
+        <p class="text-xs md:text-sm text-navy-700/70">Fortalece tu confianza y construye una mejor relación contigo misma.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7.5" r="2.6"/><path d="M3 19c0-3 2.2-5.2 5-5.2s5 2.2 5 5.2"/><circle cx="17" cy="10" r="1.9"/><path d="M13.2 19c0-2.4 1.7-4 3.8-4s3.8 1.6 3.8 4"/></svg>
+        </div>
+        <h3 class="font-display text-sm md:text-base font-semibold text-navy-800 mb-1">Crianza y parentalidad</h3>
+        <p class="text-xs md:text-sm text-navy-700/70">Acompañamiento respetuoso para los desafíos de la crianza.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M3.8 12h16.4"/><path d="M12 3.8c2.6 2.1 4.1 5.1 4.1 8.2s-1.5 6.1-4.1 8.2c-2.6-2.1-4.1-5.1-4.1-8.2S9.4 5.9 12 3.8z"/></svg>
+        </div>
+        <h3 class="font-display text-sm md:text-base font-semibold text-navy-800 mb-1">Procesos migratorios</h3>
+        <p class="text-xs md:text-sm text-navy-700/70">Apoyo especializado para adaptarte y reconstruir tu vida.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-rose-50 flex items-center justify-center">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4 0-7-2-7-2s1-4 7-4 7 4 7 4-3 2-7 2z"/><path d="M12 15V9"/><path d="M12 9c-2-3-2-6 0-7 2 1 2 4 0 7z"/><path d="M12 9.5c2-2 5-2 6-.2-1.1 2-4.1 2.9-6 .2z"/><path d="M12 9.5c-2-2-5-2-6-.2 1.1 2 4.1 2.9 6 .2z"/></svg>
+        </div>
+        <h3 class="font-display text-sm md:text-base font-semibold text-navy-800 mb-1">Regulación emocional</h3>
+        <p class="text-xs md:text-sm text-navy-700/70">Desarrolla herramientas para gestionar tus emociones.</p>
+      </div>
+    </div>
   </div>
-  <div class="flex flex-wrap justify-center gap-4 px-4">
-    <a href="https://www.instagram.com/psico.anyuri?igsh=YzZuc3gyZHh2emoz" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg shadow hover:opacity-90 transition">
-      <i class="fab fa-instagram"></i>
-      <span>Instagram</span>
-    </a>
-    <a href="https://www.tiktok.com/@psic.anyurivasquez?_t=ZS-8z3NQrrBKQD&_r=1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-black text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-gray-900 transition">
-      <!-- Usa texto por compatibilidad de íconos -->
-      <span>TikTok</span>
-    </a>
+</section>
+
+<!-- Sobre mí -->
+<section class="relative py-16 md:py-24 px-4 md:px-8 overflow-hidden">
+  <svg viewBox="0 0 200 400" class="hidden md:block absolute -right-10 bottom-0 w-56 h-80 text-rose-100 opacity-70" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M100 390 C 90 300, 110 200, 95 10"/>
+    <path d="M95 350 C 70 340, 55 320, 60 300 C 85 305, 95 325, 95 350Z"/>
+    <path d="M97 300 C 122 290, 137 270, 132 250 C 107 255, 97 275, 97 300Z"/>
+    <path d="M93 250 C 68 240, 53 220, 58 200 C 83 205, 93 225, 93 250Z"/>
+    <path d="M95 200 C 120 190, 135 170, 130 150 C 105 155, 95 175, 95 200Z"/>
+  </svg>
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+    <div class="rounded-[2rem] overflow-hidden shadow-xl order-1">
+      <img src="img/sobre-mi.jpg" alt="Anyuri Vásquez" class="w-full h-[360px] md:h-[420px] object-cover" onerror="this.closest('div').classList.add('bg-gradient-to-br','from-rose-100','to-rose-50'); this.style.display='none'; this.insertAdjacentHTML('afterend','&lt;div class=\'h-[360px] md:h-[420px] flex items-center justify-center text-rose-300 text-sm font-medium\'&gt;Coloca img/sobre-mi.jpg&lt;/div&gt;')">
+    </div>
+    <div class="order-2">
+      <p class="text-rose-500 font-semibold tracking-wide mb-3 uppercase text-sm">Sobre mí</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-navy-800 mb-4">Hola, soy Anyuri Vásquez <span class="text-rose-400">&#10084;</span></h2>
+      <p class="text-navy-700/80 leading-relaxed mb-4">
+        Soy psicóloga clínica con enfoque humanista y Gestalt. Mi propósito es acompañarte en tu proceso de crecimiento personal, ofreciéndote un espacio seguro, empático y libre de juicios.
+      </p>
+      <p class="text-navy-700/80 leading-relaxed mb-6">
+        Creo en el poder de la terapia para generar cambios reales y significativos en tu vida.
+      </p>
+      <a href="quien-soy.html" class="inline-flex bg-rose-400 hover:bg-rose-500 text-white font-semibold py-3 px-7 rounded-full shadow-sm transition">Conocer más sobre mí</a>
+    </div>
+  </div>
+</section>
+
+<!-- Terapia para migrantes -->
+<section id="para-migrantes" class="bg-[#e9eff8] py-16 md:py-20 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div class="flex flex-col items-start">
+      <div class="w-20 h-20 rounded-full bg-white shadow-sm flex items-center justify-center mb-5">
+        <svg viewBox="0 0 24 24" class="w-9 h-9 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="9" width="14" height="10" rx="1.6"/>
+          <path d="M9 9V7a3 3 0 0 1 3-3 3 3 0 0 1 3 3v2"/>
+          <path d="M10.4 13.2a1.6 1.6 0 1 1 3.2 0c0 1.1-1.6 1.9-1.6 1.9s-1.6-.8-1.6-1.9z"/>
+        </svg>
+      </div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-navy-800 mb-4">Terapia para migrantes</h2>
+      <p class="text-navy-700/80 leading-relaxed mb-6">
+        Migrar puede ser un proceso desafiante y complejo que genera emociones como tristeza, ansiedad, culpa y soledad. Te acompaño a transitar este camino con herramientas que te ayuden a sentirte en paz y construir tu nuevo hogar.
+      </p>
+      <a href="agenda.html" class="text-rose-500 font-semibold hover:underline">Reservar una sesión &rarr;</a>
+    </div>
+    <ul class="space-y-4">
+      <li class="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm">
+        <span class="w-7 h-7 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center shrink-0"><i class="fas fa-check text-xs"></i></span>
+        <span class="text-navy-800 font-medium">Adaptación a un nuevo país</span>
+      </li>
+      <li class="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm">
+        <span class="w-7 h-7 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center shrink-0"><i class="fas fa-check text-xs"></i></span>
+        <span class="text-navy-800 font-medium">Nostalgia y duelo migratorio</span>
+      </li>
+      <li class="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm">
+        <span class="w-7 h-7 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center shrink-0"><i class="fas fa-check text-xs"></i></span>
+        <span class="text-navy-800 font-medium">Ansiedad y estrés por cambios</span>
+      </li>
+      <li class="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm">
+        <span class="w-7 h-7 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center shrink-0"><i class="fas fa-check text-xs"></i></span>
+        <span class="text-navy-800 font-medium">Construcción de una nueva identidad</span>
+      </li>
+      <li class="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm">
+        <span class="w-7 h-7 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center shrink-0"><i class="fas fa-check text-xs"></i></span>
+        <span class="text-navy-800 font-medium">Apoyo para ti y tu familia</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section class="py-16 md:py-20 px-4 md:px-8 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-center text-navy-800">Lo que dicen mis pacientes</h2>
+    <div class="flex items-center justify-center gap-2 mt-2 mb-10">
+      <span class="h-px w-10 bg-rose-300"></span>
+      <i class="fas fa-heart text-rose-300 text-xs"></i>
+      <span class="h-px w-10 bg-rose-300"></span>
+    </div>
+<div id="testimonios-track" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory flex md:grid">
+      <div data-dot="0" class="snap-center shrink-0 w-[85vw] md:w-auto bg-rose-50/60 rounded-2xl p-6">
+        <i class="fas fa-quote-left text-rose-300 text-2xl mb-3"></i>
+        <p class="text-navy-700/85 leading-relaxed mb-4">"Por primera vez sentí que alguien entendía lo que estaba viviendo. Me ayudó muchísimo a manejar mi ansiedad."</p>
+        <p class="text-navy-800 font-semibold text-sm">— M., 28 años</p>
+      </div>
+      <div data-dot="1" class="snap-center shrink-0 w-[85vw] md:w-auto bg-rose-50/60 rounded-2xl p-6">
+        <i class="fas fa-quote-left text-rose-300 text-2xl mb-3"></i>
+        <p class="text-navy-700/85 leading-relaxed mb-4">"El acompañamiento de Anyuri fue clave para mejorar mi autoestima y aprender a poner límites sin sentirme culpable."</p>
+        <p class="text-navy-800 font-semibold text-sm">— L., 34 años</p>
+      </div>
+      <div data-dot="2" class="snap-center shrink-0 w-[85vw] md:w-auto bg-rose-50/60 rounded-2xl p-6">
+        <i class="fas fa-quote-left text-rose-300 text-2xl mb-3"></i>
+        <p class="text-navy-700/85 leading-relaxed mb-4">"Me sentí comprendida en mi proceso migratorio. Es una profesional increíblemente humana y cercana."</p>
+        <p class="text-navy-800 font-semibold text-sm">— K., 30 años</p>
+      </div>
+    </div>
+    <div id="testimonios-dots" class="flex md:hidden items-center justify-center gap-2">
+      <button data-goto="0" class="dot w-2.5 h-2.5 rounded-full bg-rose-400" aria-label="Testimonio 1"></button>
+      <button data-goto="1" class="dot w-2.5 h-2.5 rounded-full bg-rose-200" aria-label="Testimonio 2"></button>
+      <button data-goto="2" class="dot w-2.5 h-2.5 rounded-full bg-rose-200" aria-label="Testimonio 3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-4 md:px-8 pb-16 md:pb-20">
+  <div class="max-w-6xl mx-auto bg-rose-200/70 rounded-3xl px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="text-center md:text-left">
+      <h3 class="font-display text-2xl md:text-3xl font-bold text-navy-800 mb-2">Tu bienestar es importante <span class="text-rose-400">&#10084;</span></h3>
+      <p class="text-navy-700/75">Agenda tu primera sesión y da el primer paso hacia una vida más tranquila y plena.</p>
+    </div>
+    <div class="text-center shrink-0">
+      <a href="agenda.html" class="inline-flex items-center gap-2 bg-white text-rose-500 font-semibold py-3 px-8 rounded-full shadow-sm hover:bg-rose-50 transition"><i class="far fa-calendar-alt"></i> Reservar mi primera sesión</a>
+      <p class="text-xs text-navy-700/60 mt-2">Atención 100% online</p>
+    </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="bg-white shadow-md py-6 text-center">
-  <p>&copy; 2025 Lic. Anyuri Vasquez. Todos los derechos reservados.</p>
+<footer class="relative">
+  <svg viewBox="0 0 1440 80" class="w-full h-10 md:h-14 block" preserveAspectRatio="none"><path fill="#1c3350" d="M0,32 C240,80 480,0 720,24 C960,48 1200,88 1440,32 L1440,80 L0,80 Z"/></svg>
+  <div class="bg-navy-800 text-rose-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <svg viewBox="0 0 48 48" class="w-10 h-10 text-rose-300" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="24" cy="24" r="21" opacity="0.45"/>
+            <path d="M24 32c0-9 6-15 12-16-1 9-6 14-12 16z"/>
+            <path d="M24 32c0-7-5-12-10-13 1 7 5 11 10 13z"/>
+            <path d="M24 32V20" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <p class="font-display text-lg font-bold text-white">Lic. Anyuri Vásquez</p>
+            <p class="text-[11px] uppercase tracking-widest text-rose-300 font-semibold">Psicóloga Clínica</p>
+          </div>
+        </div>
+        <p class="text-sm text-rose-100/75 max-w-xs">Acompañamiento emocional profesional para tu bienestar integral.</p>
+        <div class="flex gap-3 mt-4 text-lg">
+          <a href="https://www.instagram.com/psico.anyuri?igsh=YzZuc3gyZHh2emoz" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose-400 transition"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@psic.anyurivasquez?_t=ZS-8z3NQrrBKQD&_r=1" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose-400 transition text-xs font-bold">TT</a>
+          <a href="mailto:Anyuri.vasquez99@gmail.com" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose-400 transition"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-display text-base font-bold text-white mb-4">Enlaces rápidos</h4>
+        <ul class="space-y-2 text-sm text-rose-100/75">
+          <li><a href="index.html" class="hover:text-rose-300 transition">Inicio</a></li>
+          <li><a href="quien-soy.html" class="hover:text-rose-300 transition">Sobre mí</a></li>
+          <li><a href="servicios.html" class="hover:text-rose-300 transition">Servicios</a></li>
+          <li><a href="para-migrantes.html" class="hover:text-rose-300 transition">Para migrantes</a></li>
+          <li><a href="blog.html" class="hover:text-rose-300 transition">Blog</a></li>
+          <li><a href="contacto.html" class="hover:text-rose-300 transition">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display text-base font-bold text-white mb-4">Información</h4>
+        <ul class="space-y-2 text-sm text-rose-100/75">
+          <li class="flex items-center gap-2"><i class="fas fa-globe text-rose-300"></i> Atención 100% online</li>
+          <li class="flex items-center gap-2"><i class="fas fa-lock text-rose-300"></i> Confidencialidad garantizada</li>
+          <li class="flex items-center gap-2"><i class="fas fa-calendar-check text-rose-300"></i> Citas flexibles</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope text-rose-300"></i> Anyuri.vasquez99@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 py-4 text-center text-xs text-rose-100/70">
+      &copy; 2025 Lic. Anyuri Vásquez. Todos los derechos reservados.
+    </div>
+  </div>
 </footer>
 
 <!-- Script: toggle del menú móvil -->
@@ -98,39 +311,58 @@
   (function(){
     const btn = document.getElementById('menu-toggle');
     const nav = document.getElementById('primary-nav');
+    const mobileClasses = ['absolute','top-16','left-0','w-full','bg-white','flex','flex-col','gap-1','px-5','py-4','shadow-lg','border-t','border-rose-100','z-50'];
+    function cleanupMobileStyles(){ nav.classList.remove(...mobileClasses); }
     if(btn && nav){
       btn.addEventListener('click', function(){
         const wasHidden = nav.classList.contains('hidden');
-        // Toggle visibilidad
         nav.classList.toggle('hidden');
-        // Ajuste especial para móvil: lista vertical bajo el header, fondo sólido y enlaces visibles
         if (window.innerWidth < 768) {
-          if (wasHidden) {
-            nav.classList.add('absolute','top-16','left-0','w-full','bg-blue-800','flex','flex-col','gap-2','px-4','py-3','shadow-md','z-50');
-            // Enlaces más visibles en móvil
-            nav.querySelectorAll('a').forEach(a=>{
-              a.classList.add('text-white','font-semibold','py-2');
-            });
-          } else {
-            nav.classList.remove('absolute','top-16','left-0','w-full','bg-blue-800','flex','flex-col','gap-2','px-4','py-3','shadow-md','z-50');
-            nav.querySelectorAll('a').forEach(a=>{
-              a.classList.remove('text-white','font-semibold','py-2');
-            });
-          }
+          if (wasHidden) { nav.classList.add(...mobileClasses); }
+          else { cleanupMobileStyles(); }
         }
         this.setAttribute('aria-expanded', (!nav.classList.contains('hidden')).toString());
       });
-      // Asegurar que en escritorio siempre esté visible
       const mq = window.matchMedia('(min-width: 768px)');
-      const sync = () => { if(mq.matches) { nav.classList.remove('hidden'); } }
+      const sync = () => { if(mq.matches) { nav.classList.remove('hidden'); cleanupMobileStyles(); } }
       mq.addEventListener ? mq.addEventListener('change', sync) : mq.addListener(sync);
       sync();
     }
   })();
 </script>
 
+<!-- Script: carrusel de testimonios (mobile) -->
+<script>
+  (function(){
+    const track = document.getElementById('testimonios-track');
+    const dotsWrap = document.getElementById('testimonios-dots');
+    if (!track || !dotsWrap) return;
+    const cards = Array.from(track.children);
+    const dots = Array.from(dotsWrap.querySelectorAll('.dot'));
+    function setActive(i){
+      dots.forEach((d, idx) => d.classList.toggle('bg-rose-400', idx === i));
+      dots.forEach((d, idx) => d.classList.toggle('bg-rose-200', idx !== i));
+    }
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const i = parseInt(dot.dataset.goto, 10);
+        const card = cards[i];
+        if (card) card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const i = parseInt(entry.target.dataset.dot, 10);
+            setActive(i);
+          }
+        });
+      }, { root: track, threshold: 0.6 });
+      cards.forEach(c => obs.observe(c));
+    }
+  })();
+</script>
+
 </body>
 </html>
-
-
-

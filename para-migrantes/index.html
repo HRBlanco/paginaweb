@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Terapia para Migrantes - Lic. Anyuri Vásquez</title>
+<meta name="description" content="Apoyo psicológico especializado para personas migrantes. Supera el duelo migratorio, la soledad y reconstruye tu bienestar en un nuevo país con la Lic. Anyuri Vásquez.">
+<link rel="icon" href="../favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../js/tailwind-config.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body class="bg-[#fffaf9] text-navy-900 font-sans">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+  <div class="max-w-7xl mx-auto flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
+    <a href="../index.html" class="flex items-center gap-3 shrink-0">
+      <svg viewBox="0 0 48 48" class="w-10 h-10 md:w-11 md:h-11 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="24" cy="24" r="21" opacity="0.45"/>
+        <path d="M24 32c0-9 6-15 12-16-1 9-6 14-12 16z"/>
+        <path d="M24 32c0-7-5-12-10-13 1 7 5 11 10 13z"/>
+        <path d="M24 32V20" stroke-linecap="round"/>
+      </svg>
+      <span class="leading-tight">
+        <span class="block font-display text-base md:text-xl font-bold text-navy-800 whitespace-nowrap">Lic. Anyuri Vásquez</span>
+        <span class="block text-[9px] md:text-[11px] uppercase tracking-[0.18em] text-rose-400 font-semibold">Psicóloga Clínica</span>
+      </span>
+    </a>
+    <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-navy-800 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-300" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+    <nav class="ml-4">
+      <ul id="primary-nav" class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-navy-700">
+        <li><a href="../index.html" class="hover:text-rose-500 transition">Inicio</a></li>
+        <li><a href="../quien-soy.html" class="hover:text-rose-500 transition">Sobre mí</a></li>
+        <li><a href="../servicios.html" class="hover:text-rose-500 transition">Servicios</a></li>
+        <li><a href="../para-migrantes.html" class="text-rose-500 font-semibold">Para migrantes</a></li>
+        <li><a href="../blog.html" class="hover:text-rose-500 transition">Blog</a></li>
+        <li><a href="../contacto.html" class="hover:text-rose-500 transition">Contacto</a></li>
+        <li><a href="../agenda.html" class="btn-cta inline-flex items-center gap-2 bg-rose-400 hover:bg-rose-500 text-white font-semibold py-2.5 px-5 rounded-full shadow-sm transition whitespace-nowrap"><i class="far fa-calendar-alt"></i> Reservar cita</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="leaf-pattern bg-gradient-to-b from-[#e9eff8] to-[#fffaf9] py-20 px-4 md:px-16">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-rose-500 font-semibold tracking-wide mb-4">Apoyo especializado</p>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-navy-800 leading-tight mb-6">
+        Terapia para<br>
+        <span class="text-rose-400">migrantes</span>
+      </h1>
+      <p class="text-navy-700/80 text-lg leading-relaxed mb-8">
+        Migrar transforma tu vida de maneras que pocas personas a tu alrededor comprenden. No estás solo/a. Existe un espacio seguro donde procesar todo lo que has vivido.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="../agenda.html" class="inline-flex items-center gap-2 bg-rose-400 hover:bg-rose-500 text-white font-semibold py-3 px-7 rounded-full shadow-sm transition">
+          <i class="far fa-calendar-alt"></i> Reservar cita
+        </a>
+        <a href="#que-es" class="inline-flex items-center gap-2 border border-navy-300 text-navy-700 hover:border-rose-400 hover:text-rose-500 font-semibold py-3 px-7 rounded-full transition">
+          Saber más
+        </a>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <!-- Ilustración decorativa con SVG -->
+      <div class="relative w-72 h-72 md:w-80 md:h-80">
+        <div class="absolute inset-0 rounded-full bg-[#d6e4f5]/60"></div>
+        <div class="absolute inset-6 rounded-full bg-[#e9eff8]/80"></div>
+        <!-- Globo terráqueo estilizado -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg viewBox="0 0 160 160" class="w-48 h-48 text-navy-700" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Círculo principal -->
+            <circle cx="80" cy="80" r="52" stroke="currentColor" opacity="0.25"/>
+            <!-- Meridiano vertical -->
+            <ellipse cx="80" cy="80" rx="20" ry="52" stroke="currentColor" opacity="0.2"/>
+            <!-- Ecuador -->
+            <line x1="28" y1="80" x2="132" y2="80" stroke="currentColor" opacity="0.2"/>
+            <!-- Paralelo superior -->
+            <ellipse cx="80" cy="62" rx="36" ry="8" stroke="currentColor" opacity="0.15"/>
+            <!-- Paralelo inferior -->
+            <ellipse cx="80" cy="98" rx="36" ry="8" stroke="currentColor" opacity="0.15"/>
+            <!-- Corazón en el centro -->
+            <path d="M80 94 C80 94 60 82 60 70 C60 63 66 58 73 62 C76 63.5 79 67 80 69 C81 67 84 63.5 87 62 C94 58 100 63 100 70 C100 82 80 94 80 94Z" fill="#ec7ca0" stroke="#ec7ca0" stroke-width="0.5" opacity="0.9"/>
+            <!-- Línea de vuelo / trayectoria -->
+            <path d="M42 55 Q65 40 95 58" stroke="#ec7ca0" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.7"/>
+            <!-- Avión pequeño -->
+            <g transform="translate(92,54) rotate(-30)" opacity="0.85">
+              <path d="M0 0 L8 -3 L8 3 Z" fill="#ec7ca0" stroke="none"/>
+              <line x1="-2" y1="0" x2="0" y2="-5" stroke="#ec7ca0" stroke-width="1"/>
+              <line x1="-2" y1="0" x2="0" y2="5" stroke="#ec7ca0" stroke-width="1"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ¿Qué es el duelo migratorio? -->
+<section id="que-es" class="py-20 px-4 md:px-16">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-rose-500 font-semibold tracking-wide mb-3">Entendiendo tu experiencia</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-navy-800 mb-5">¿Qué es el duelo migratorio?</h2>
+      <p class="text-navy-700/75 max-w-2xl mx-auto">Migrar implica dejar atrás mucho más que un lugar. Es una pérdida múltiple y silenciosa que pocas personas reconocen.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow-sm border border-rose-100 p-7 hover:shadow-md transition">
+        <div class="w-12 h-12 rounded-full bg-[#e9eff8] flex items-center justify-center mb-5">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 text-navy-600" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h4 class="font-display text-lg font-semibold text-navy-800 mb-3">Pérdida del hogar</h4>
+        <p class="text-navy-700/70 text-sm leading-relaxed">Extrañas los sabores, los olores, la familia y los amigos que quedaron. Esa nostalgia no desaparece sola — necesita ser procesada.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-rose-100 p-7 hover:shadow-md transition">
+        <div class="w-12 h-12 rounded-full bg-[#e9eff8] flex items-center justify-center mb-5">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 text-navy-600" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+        </div>
+        <h4 class="font-display text-lg font-semibold text-navy-800 mb-3">Choque cultural</h4>
+        <p class="text-navy-700/70 text-sm leading-relaxed">Las diferencias en costumbres, lenguaje y formas de relacionarse generan confusión, agotamiento y sensación de no pertenecer a ningún lugar.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-rose-100 p-7 hover:shadow-md transition">
+        <div class="w-12 h-12 rounded-full bg-[#e9eff8] flex items-center justify-center mb-5">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 text-navy-600" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <h4 class="font-display text-lg font-semibold text-navy-800 mb-3">Ruptura de redes</h4>
+        <p class="text-navy-700/70 text-sm leading-relaxed">Reconstruir vínculos desde cero es difícil. La soledad en el nuevo país puede volverse invisible para quienes no lo han vivido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Desafíos que enfrentas -->
+<section class="bg-[#e9eff8] py-20 px-4 md:px-16">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="text-rose-500 font-semibold tracking-wide mb-3">Lo que puedo ayudarte a superar</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-navy-800 mb-8">Desafíos frecuentes en la migración</h2>
+      <ul class="space-y-5">
+        <li class="flex items-start gap-4">
+          <span class="mt-0.5 w-6 h-6 rounded-full bg-rose-400 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <p class="font-semibold text-navy-800">Superar el duelo migratorio</p>
+            <p class="text-navy-700/70 text-sm mt-1">Procesar las pérdidas invisibles que trae dejar tu país: familia, identidad, seguridad.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="mt-0.5 w-6 h-6 rounded-full bg-rose-400 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <p class="font-semibold text-navy-800">Manejar la soledad y el aislamiento</p>
+            <p class="text-navy-700/70 text-sm mt-1">Desarrollar herramientas para afrontar la falta de red de apoyo en el nuevo entorno.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="mt-0.5 w-6 h-6 rounded-full bg-rose-400 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <p class="font-semibold text-navy-800">Reconstruir tu identidad</p>
+            <p class="text-navy-700/70 text-sm mt-1">Integrar quién eras con quien estás siendo en este nuevo contexto cultural.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="mt-0.5 w-6 h-6 rounded-full bg-rose-400 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <p class="font-semibold text-navy-800">Afrontar la incertidumbre y el estrés</p>
+            <p class="text-navy-700/70 text-sm mt-1">Gestionar la angustia ante los procesos legales, laborales y el futuro desconocido.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="mt-0.5 w-6 h-6 rounded-full bg-rose-400 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <p class="font-semibold text-navy-800">Fortalecer los vínculos a distancia</p>
+            <p class="text-navy-700/70 text-sm mt-1">Mantener y cuidar las relaciones con la familia que quedó en tu país de origen.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="mt-0.5 w-6 h-6 rounded-full bg-rose-400 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <p class="font-semibold text-navy-800">Adaptación cultural y discriminación</p>
+            <p class="text-navy-700/70 text-sm mt-1">Procesar experiencias de xenofobia y construir resiliencia frente a estos desafíos.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Cita inspiradora -->
+    <div class="flex flex-col gap-6">
+      <div class="bg-white rounded-3xl p-8 shadow-sm border border-blue-100/60 relative">
+        <svg class="absolute top-5 left-6 w-8 h-8 text-rose-200" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+        <p class="text-navy-700/85 text-base leading-relaxed italic pl-8 pt-2">
+          "Migrar es nacer de nuevo. Y ese renacer necesita acompañamiento, tiempo y un espacio seguro donde las emociones tengan nombre."
+        </p>
+        <p class="text-rose-400 font-semibold text-sm mt-5 pl-8">— Lic. Anyuri Vásquez</p>
+      </div>
+
+      <!-- Datos de contexto -->
+      <div class="bg-white rounded-3xl p-7 shadow-sm border border-blue-100/60">
+        <h4 class="font-display text-navy-800 font-semibold text-lg mb-5">¿Por qué apoyo especializado?</h4>
+        <div class="space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#e9eff8] flex items-center justify-center shrink-0">
+              <i class="fas fa-brain text-navy-600 text-lg"></i>
+            </div>
+            <p class="text-navy-700/80 text-sm">El duelo migratorio tiene características únicas que requieren un abordaje específico.</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#e9eff8] flex items-center justify-center shrink-0">
+              <i class="fas fa-globe-americas text-navy-600 text-lg"></i>
+            </div>
+            <p class="text-navy-700/80 text-sm">Atención online disponible para quienes están en Chile y en el exterior.</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#e9eff8] flex items-center justify-center shrink-0">
+              <i class="fas fa-heart text-rose-400 text-lg"></i>
+            </div>
+            <p class="text-navy-700/80 text-sm">Comprensión empática desde la experiencia real de quien también ha migrado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Proceso terapéutico -->
+<section class="py-20 px-4 md:px-16 bg-[#fffaf9]">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-rose-500 font-semibold tracking-wide mb-3">El proceso</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-navy-800 mb-4">¿Cómo funciona la terapia?</h2>
+      <p class="text-navy-700/75 max-w-xl mx-auto">Un proceso claro, cálido y adaptado a tus circunstancias como migrante.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="text-center relative">
+        <div class="w-14 h-14 rounded-full bg-rose-100 flex items-center justify-center mx-auto mb-4 relative z-10">
+          <span class="font-display text-xl font-bold text-rose-400">1</span>
+        </div>
+        <h5 class="font-semibold text-navy-800 mb-2">Primera consulta</h5>
+        <p class="text-navy-700/65 text-sm">Conversamos sobre tu situación actual y lo que buscas trabajar.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-rose-100 flex items-center justify-center mx-auto mb-4">
+          <span class="font-display text-xl font-bold text-rose-400">2</span>
+        </div>
+        <h5 class="font-semibold text-navy-800 mb-2">Plan personalizado</h5>
+        <p class="text-navy-700/65 text-sm">Definimos objetivos terapéuticos adaptados a tu historia migratoria.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-rose-100 flex items-center justify-center mx-auto mb-4">
+          <span class="font-display text-xl font-bold text-rose-400">3</span>
+        </div>
+        <h5 class="font-semibold text-navy-800 mb-2">Proceso terapéutico</h5>
+        <p class="text-navy-700/65 text-sm">Sesiones semanales o quincenales en un espacio confidencial y seguro.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-rose-100 flex items-center justify-center mx-auto mb-4">
+          <span class="font-display text-xl font-bold text-rose-400">4</span>
+        </div>
+        <h5 class="font-semibold text-navy-800 mb-2">Cierre y seguimiento</h5>
+        <p class="text-navy-700/65 text-sm">Evaluamos los avances y planificamos el alta o seguimiento necesario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="py-16 px-4 md:px-16 bg-gradient-to-b from-[#fffaf9] to-rose-50">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="bg-white rounded-3xl shadow-md px-8 md:px-14 py-12 border border-rose-100">
+      <div class="w-16 h-16 rounded-full bg-rose-50 flex items-center justify-center mx-auto mb-6">
+        <i class="fas fa-hands-holding-heart text-rose-400 text-2xl"></i>
+      </div>
+      <h2 class="font-display text-3xl font-bold text-navy-800 mb-4">Da el primer paso</h2>
+      <p class="text-navy-700/75 mb-8 leading-relaxed">No tienes que enfrentar sola/solo este proceso. Agenda una primera sesión y comencemos a trabajar juntos en tu bienestar.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../agenda.html" class="inline-flex items-center justify-center gap-2 bg-rose-400 hover:bg-rose-500 text-white font-semibold py-3.5 px-8 rounded-full shadow-sm transition">
+          <i class="far fa-calendar-alt"></i> Reservar mi cita
+        </a>
+        <a href="https://wa.me/56966216084" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-green-400 text-green-700 hover:bg-green-50 font-semibold py-3.5 px-8 rounded-full transition">
+          <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+        </a>
+      </div>
+      <p class="text-xs text-navy-700/45 mt-6">Sesiones online disponibles · Confidencialidad garantizada</p>
+    </div>
+  </div>
+</section>
+
+<footer class="relative">
+  <svg viewBox="0 0 1440 80" class="w-full h-10 md:h-14 block" preserveAspectRatio="none"><path fill="#1c3350" d="M0,32 C240,80 480,0 720,24 C960,48 1200,88 1440,32 L1440,80 L0,80 Z"/></svg>
+  <div class="bg-navy-800 text-rose-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <svg viewBox="0 0 48 48" class="w-10 h-10 text-rose-300" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="24" cy="24" r="21" opacity="0.45"/>
+            <path d="M24 32c0-9 6-15 12-16-1 9-6 14-12 16z"/>
+            <path d="M24 32c0-7-5-12-10-13 1 7 5 11 10 13z"/>
+            <path d="M24 32V20" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <p class="font-display text-lg font-bold text-white">Lic. Anyuri Vásquez</p>
+            <p class="text-[11px] uppercase tracking-widest text-rose-300 font-semibold">Psicóloga Clínica</p>
+          </div>
+        </div>
+        <p class="text-sm text-rose-100/75 max-w-xs">Acompañamiento emocional profesional para tu bienestar integral.</p>
+        <div class="flex gap-3 mt-4 text-lg">
+          <a href="https://www.instagram.com/psico.anyuri?igsh=YzZuc3gyZHh2emoz" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose-400 transition"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@psic.anyurivasquez?_t=ZS-8z3NQrrBKQD&_r=1" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose-400 transition text-xs font-bold">TT</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-display text-base font-bold text-white mb-4">Enlaces rápidos</h4>
+        <ul class="space-y-2 text-sm text-rose-100/75">
+          <li><a href="../index.html" class="hover:text-rose-300 transition">Inicio</a></li>
+          <li><a href="../quien-soy.html" class="hover:text-rose-300 transition">Sobre mí</a></li>
+          <li><a href="../servicios.html" class="hover:text-rose-300 transition">Servicios</a></li>
+          <li><a href="../para-migrantes.html" class="hover:text-rose-300 transition">Para migrantes</a></li>
+          <li><a href="../blog.html" class="hover:text-rose-300 transition">Blog</a></li>
+          <li><a href="../contacto.html" class="hover:text-rose-300 transition">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display text-base font-bold text-white mb-4">Información</h4>
+        <ul class="space-y-2 text-sm text-rose-100/75">
+          <li class="flex items-center gap-2"><i class="fas fa-lock text-rose-300"></i> Confidencialidad garantizada</li>
+          <li class="flex items-center gap-2"><i class="fas fa-calendar-check text-rose-300"></i> Citas flexibles</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope text-rose-300"></i> Anyuri.vasquez99@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 py-4 text-center text-xs text-rose-100/70">
+      &copy; 2025 Lic. Anyuri Vásquez. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    const btn = document.getElementById('menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const mobileClasses = ['absolute','top-16','left-0','w-full','bg-white','flex','flex-col','gap-1','px-5','py-4','shadow-lg','border-t','border-rose-100','z-50'];
+    function cleanupMobileStyles(){ nav.classList.remove(...mobileClasses); }
+    if(btn && nav){
+      btn.addEventListener('click', function(){
+        const wasHidden = nav.classList.contains('hidden');
+        nav.classList.toggle('hidden');
+        if (window.innerWidth < 768) {
+          if (wasHidden) { nav.classList.add(...mobileClasses); }
+          else { cleanupMobileStyles(); }
+        }
+        this.setAttribute('aria-expanded', (!nav.classList.contains('hidden')).toString());
+      });
+      const mq = window.matchMedia('(min-width: 768px)');
+      const sync = () => { if(mq.matches) { nav.classList.remove('hidden'); cleanupMobileStyles(); } }
+      mq.addEventListener ? mq.addEventListener('change', sync) : mq.addListener(sync);
+      sync();
+    }
+  })();
+</script>
+
+</body>
+</html>

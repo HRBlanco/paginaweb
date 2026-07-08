@@ -19,6 +19,39 @@
     });
   }
 
+  // Manejador para formulario de newsletter (Brevo)
+  var newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(event){
+      event.preventDefault();
+      var emailInput = newsletterForm.querySelector('[name="email"]');
+      var btn = newsletterForm.querySelector('button[type="submit"]');
+      if (!emailInput || !emailInput.value) return;
+      var originalText = btn ? btn.textContent : '';
+      if (btn) { btn.textContent = 'Enviando...'; btn.disabled = true; }
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput.value.trim() })
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (data.ok) {
+          if (btn) { btn.textContent = '¡Suscrito!'; }
+          newsletterForm.reset();
+          setTimeout(function(){ if (btn) { btn.textContent = originalText; btn.disabled = false; } }, 3000);
+        } else {
+          if (btn) { btn.textContent = originalText; btn.disabled = false; }
+          alert('Error al suscribirse. Intenta de nuevo.');
+        }
+      })
+      .catch(function(){
+        if (btn) { btn.textContent = originalText; btn.disabled = false; }
+        alert('Error de conexión. Intenta de nuevo.');
+      });
+    });
+  }
+
   // Manejador para formulario de reserva (agenda)
   var reservaForm = document.getElementById('reservaForm');
   if (reservaForm) {

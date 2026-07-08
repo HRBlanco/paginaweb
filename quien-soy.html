@@ -1,129 +1,183 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>¿Quién soy? - Lic. Anyuri Vasquez</title>
-  <meta name="description" content="Biografía y enfoque de la Lic. Anyuri Vasquez, psicóloga clínica.">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Sobre mí - Lic. Anyuri Vásquez</title>
+<meta name="description" content="Biografía y enfoque de la Lic. Anyuri Vásquez, psicóloga clínica.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="js/tailwind-config.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-[#fffaf9] text-navy-900 font-sans">
 
-  <!-- Navbar fija -->
-  <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white fixed w-full z-50 shadow-lg h-16 md:h-20">
-    <div class="max-w-7xl mx-auto flex justify-between items-center h-full px-4 md:px-6">
-      <h1 class="text-xl md:text-3xl font-bold whitespace-nowrap">Lic. Anyuri Vasquez</h1>
-      <!-- Botón menú (solo móvil) -->
-      <button id="menu-toggle" class="md:hidden ml-2 p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-      </button>
-      <nav class="ml-4 flex-1 flex justify-end">
-        <ul id="primary-nav" class="hidden md:flex w-full md:justify-end gap-4 md:gap-6 text-sm md:text-lg font-medium md:overflow-x-visible overflow-x-auto no-scrollbar whitespace-nowrap">
-          <li><a href="index.html" class="hover:text-gray-200 transition">Inicio</a></li>
-          <li><a href="quien-soy.html" class="hover:text-gray-200 transition underline font-semibold">¿Quién soy?</a></li>
-          <li><a href="servicios.html" class="hover:text-gray-200 transition">Servicios</a></li>
-          <li><a href="agenda.html" class="hover:text-gray-200 transition">Agenda</a></li>
-          <li><a href="foro.html" class="hover:text-gray-200 transition">Consultas</a></li>
-          <li><a href="contacto.html" class="hover:text-gray-200 transition">Contacto</a></li>
-        </ul>
-      </nav>
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+  <div class="max-w-7xl mx-auto flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <svg viewBox="0 0 48 48" class="w-10 h-10 md:w-11 md:h-11 text-rose-400" fill="none" stroke="currentColor" stroke-width="1.4">
+        <circle cx="24" cy="24" r="21" opacity="0.45"/>
+        <path d="M24 32c0-9 6-15 12-16-1 9-6 14-12 16z"/>
+        <path d="M24 32c0-7-5-12-10-13 1 7 5 11 10 13z"/>
+        <path d="M24 32V20" stroke-linecap="round"/>
+      </svg>
+      <span class="leading-tight">
+        <span class="block font-display text-base md:text-xl font-bold text-navy-800 whitespace-nowrap">Lic. Anyuri Vásquez</span>
+        <span class="block text-[9px] md:text-[11px] uppercase tracking-[0.18em] text-rose-400 font-semibold">Psicóloga Clínica</span>
+      </span>
+    </a>
+    <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-navy-800 hover:bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-300" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+    <nav class="ml-4">
+      <ul id="primary-nav" class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-navy-700">
+        <li><a href="index.html" class="hover:text-rose-500 transition">Inicio</a></li>
+        <li><a href="quien-soy.html" class="text-rose-500 font-semibold">Sobre mí</a></li>
+        <li><a href="servicios.html" class="hover:text-rose-500 transition">Servicios</a></li>
+        <li><a href="para-migrantes.html" class="hover:text-rose-500 transition">Para migrantes</a></li>
+        <li><a href="blog.html" class="hover:text-rose-500 transition">Blog</a></li>
+        <li><a href="contacto.html" class="hover:text-rose-500 transition">Contacto</a></li>
+        <li><a href="agenda.html" class="btn-cta inline-flex items-center gap-2 bg-rose-400 hover:bg-rose-500 text-white font-semibold py-2.5 px-5 rounded-full shadow-sm transition whitespace-nowrap"><i class="far fa-calendar-alt"></i> Reservar cita</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="leaf-pattern bg-gradient-to-b from-rose-50 to-[#fffaf9] py-16 px-4 md:px-16">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+    <div class="md:col-span-1 flex justify-center">
+      <div class="bg-gradient-to-br from-rose-200 via-rose-100 to-white rounded-[2rem] p-3 shadow-xl">
+        <div class="rounded-[1.6rem] overflow-hidden h-[420px] w-64 md:h-[460px] md:w-72">
+          <img src="img/sobre-mi.jpg" alt="Lic. Anyuri Vásquez" class="w-full h-full object-cover object-top">
+        </div>
+      </div>
     </div>
-  </header>
+    <div class="md:col-span-2">
+      <p class="text-rose-500 font-semibold tracking-wide mb-3">Sobre mí</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-navy-800 mb-4">Sobre mí</h2>
+      <p class="text-lg text-navy-700/80 leading-relaxed mb-6">
+        Soy la <strong>Lic. Anyuri Vásquez</strong>, psicóloga clínica con especialidad en terapia Gestalt,
+        aportando una visión humanista donde el foco principal es aprender a gestionar emociones con un acompañamiento
+        terapéutico dónde nos enfocaremos en brindarte herramientas para afrontar situaciones cotidianas.
+      </p>
+      <div class="flex flex-wrap gap-3 text-sm text-navy-700 mb-6">
+        <span class="bg-rose-50 text-rose-500 px-4 py-1.5 rounded-full font-medium">Psicoterapia Individual</span>
+        <span class="bg-rose-50 text-rose-500 px-4 py-1.5 rounded-full font-medium">Terapia de Pareja</span>
+        <span class="bg-rose-50 text-rose-500 px-4 py-1.5 rounded-full font-medium">Ansiedad y Estrés</span>
+        <span class="bg-rose-50 text-rose-500 px-4 py-1.5 rounded-full font-medium">Autoconocimiento</span>
+      </div>
+      <div class="flex flex-wrap gap-4">
+        <a href="agenda.html" class="bg-rose-400 hover:bg-rose-500 text-white font-semibold py-3 px-6 rounded-full shadow-sm transition">Reservar cita</a>
+        <a href="servicios.html" class="bg-white border border-rose-200 text-navy-800 font-semibold py-3 px-6 rounded-full hover:bg-rose-50 transition">Ver servicios</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section class="pt-36 pb-16 px-4 md:px-16 bg-white">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
-      <div class="md:col-span-1">
-        <!-- Contenedor con fondo tipo ejemplo y recorte suave de alto -->
-        <div class="bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400 rounded-2xl shadow-xl p-2 ring-1 ring-gray-400 shadow-inner">
-          <div class="rounded-xl overflow-hidden h-[460px] md:h-[500px]">
-            <img src="img/anyuri.png" alt="Lic. Anyuri Vasquez" class="w-full h-full object-cover object-top">
+<!-- Biografía y formación -->
+<section class="py-16 px-4 md:px-16">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div class="bg-white rounded-2xl shadow-md p-8">
+      <h3 class="font-display text-2xl font-bold mb-4 text-navy-800">Biografía</h3>
+      <p class="text-navy-700/80 leading-relaxed">
+        A lo largo de mi práctica he acompañado a infantes, adolescentes y adultos en
+        procesos terapéuticos de cambio y bienestar. Me apasiona crear espacios seguros donde puedan
+        expresarse con libertad, comprender lo que sienten y desarrollar estrategias para vivir de forma más
+        plena aumentando la calidad de vida.
+      </p>
+    </div>
+    <div class="bg-white rounded-2xl shadow-md p-8">
+      <h3 class="font-display text-2xl font-bold mb-4 text-navy-800">Formación y enfoque</h3>
+      <ul class="space-y-3 text-navy-700/80">
+        <li class="flex gap-3"><i class="fas fa-circle text-rose-300 text-[6px] mt-2"></i> Licenciatura en psicología (Universidad Bicentenaria de Aragua).</li>
+        <li class="flex gap-3"><i class="fas fa-circle text-rose-300 text-[6px] mt-2"></i> Mención Clínica (Universidad Bicentenaria de Aragua).</li>
+        <li class="flex gap-3"><i class="fas fa-circle text-rose-300 text-[6px] mt-2"></i> Formación en terapia Gestalt (Instituto Gestáltico de Maracay).</li>
+        <li class="flex gap-3"><i class="fas fa-circle text-rose-300 text-[6px] mt-2"></i> Actualización continua en intervención clínica basada en evidencia.</li>
+        <li class="flex gap-3"><i class="fas fa-circle text-rose-300 text-[6px] mt-2"></i> Ética profesional y enfoque centrado en la persona.</li>
+        <li class="flex gap-3"><i class="fas fa-circle text-rose-300 text-[6px] mt-2"></i> F.V.P 13.573</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Llamado a la acción -->
+<section class="px-4 md:px-16 pb-20">
+  <div class="max-w-5xl mx-auto bg-rose-100/70 rounded-3xl px-6 md:px-12 py-10 text-center">
+    <h3 class="font-display text-2xl font-bold mb-3 text-navy-800">¿Agendamos?</h3>
+    <p class="text-navy-700/75 mb-6">Revisa mi disponibilidad y envía tu solicitud de reserva.</p>
+    <a href="agenda.html" class="bg-rose-400 hover:bg-rose-500 text-white font-semibold py-3 px-8 rounded-full shadow-sm transition">Ir a Agenda</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="relative">
+  <svg viewBox="0 0 1440 80" class="w-full h-10 md:h-14 block" preserveAspectRatio="none"><path fill="#1c3350" d="M0,32 C240,80 480,0 720,24 C960,48 1200,88 1440,32 L1440,80 L0,80 Z"/></svg>
+  <div class="bg-navy-800 text-rose-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <svg viewBox="0 0 48 48" class="w-10 h-10 text-rose-300" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="24" cy="24" r="21" opacity="0.45"/>
+            <path d="M24 32c0-9 6-15 12-16-1 9-6 14-12 16z"/>
+            <path d="M24 32c0-7-5-12-10-13 1 7 5 11 10 13z"/>
+            <path d="M24 32V20" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <p class="font-display text-lg font-bold text-white">Lic. Anyuri Vásquez</p>
+            <p class="text-[11px] uppercase tracking-widest text-rose-300 font-semibold">Psicóloga Clínica</p>
           </div>
         </div>
-      </div>
-      <div class="md:col-span-2">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">¿Quién soy?</h2>
-        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-          Soy la <strong>Lic. Anyuri Vasquez</strong>, psicóloga clínica con especialidad en terapia Gestalt, 
-          aportando una visión humanista donde el foco principal es aprender a gestionar emociones con un acompañamiento 
-          terapéutico dónde nos enfocaremos en brindarte herramientas para afrontar situaciones cotidianas.
-        </p>
-        <div class="flex flex-wrap gap-3 text-sm text-gray-600 mb-6">
-          <span class="bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Psicoterapia Individual</span>
-          <span class="bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Terapia de Pareja</span>
-          <span class="bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Ansiedad y Estrés</span>
-          <span class="bg-blue-50 text-blue-800 px-3 py-1 rounded-full">Autoconocimiento</span>
-        </div>
-        <div class="flex gap-4">
-          <a href="agenda.html" class="bg-blue-700 text-white font-semibold py-3 px-6 rounded hover:bg-blue-800 transition">Reservar cita</a>
-          <a href="servicios.html" class="bg-gray-200 text-gray-800 font-semibold py-3 px-6 rounded hover:bg-gray-300 transition">Ver servicios</a>
+        <p class="text-sm text-rose-100/75 max-w-xs">Acompañamiento emocional profesional para tu bienestar integral.</p>
+        <div class="flex gap-3 mt-4 text-lg">
+          <a href="https://www.instagram.com/psico.anyuri?igsh=YzZuc3gyZHh2emoz" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose-400 transition"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@psic.anyurivasquez?_t=ZS-8z3NQrrBKQD&_r=1" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose-400 transition text-xs font-bold">TT</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Biografía y formación -->
-  <section class="py-16 px-4 md:px-16">
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
       <div>
-        <h3 class="text-2xl font-bold mb-4 text-gray-900">Biografía</h3>
-        <p class="text-gray-700 leading-relaxed">
-          A lo largo de mi práctica he acompañado a infantes, adolescentes y adultos en 
-          procesos terapéuticos de cambio y bienestar. Me apasiona crear espacios seguros donde puedan 
-          expresarse con libertad, comprender lo que sienten y desarrollar estrategias para vivir de forma más 
-          plena aumentando la calidad de vida..
-        </p>
+        <h4 class="font-display text-base font-bold text-white mb-4">Enlaces rápidos</h4>
+        <ul class="space-y-2 text-sm text-rose-100/75">
+          <li><a href="index.html" class="hover:text-rose-300 transition">Inicio</a></li>
+          <li><a href="quien-soy.html" class="hover:text-rose-300 transition">Sobre mí</a></li>
+          <li><a href="servicios.html" class="hover:text-rose-300 transition">Servicios</a></li>
+          <li><a href="para-migrantes.html" class="hover:text-rose-300 transition">Para migrantes</a></li>
+          <li><a href="blog.html" class="hover:text-rose-300 transition">Blog</a></li>
+          <li><a href="contacto.html" class="hover:text-rose-300 transition">Contacto</a></li>
+        </ul>
       </div>
       <div>
-        <h3 class="text-2xl font-bold mb-4 text-gray-900">Formación y enfoque</h3>
-        <ul class="list-disc list-inside text-gray-700 space-y-2">
-          <li>Licenciatura en psicología ( universidad Bicentenaria de Aragua).</li>
-          <li>Mención Clínica ( Universidad Bicentenaria de Aragua).</li>
-          <li>Formación en terapia Gestalt (instituto Gestaltico de Maracay).</li>
-          <li>Actualización continua en intervención clínica basada en evidencia.</li>
-          <li>Ética profesional y enfoque centrado en la persona.</li>
-          <li>F.V.P 13.573</li>
+        <h4 class="font-display text-base font-bold text-white mb-4">Información</h4>
+        <ul class="space-y-2 text-sm text-rose-100/75">
+          <li class="flex items-center gap-2"><i class="fas fa-lock text-rose-300"></i> Confidencialidad garantizada</li>
+          <li class="flex items-center gap-2"><i class="fas fa-calendar-check text-rose-300"></i> Citas flexibles</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope text-rose-300"></i> Anyuri.vasquez99@gmail.com</li>
         </ul>
       </div>
     </div>
-  </section>
+    <div class="border-t border-white/10 py-4 text-center text-xs text-rose-100/70">
+      &copy; 2025 Lic. Anyuri Vásquez. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
 
-  <!-- Llamado a la acción -->
-  <section class="py-12 text-center bg-blue-50">
-    <h3 class="text-2xl font-bold mb-3 text-gray-900">¿Agendamos?</h3>
-    <p class="text-gray-700 mb-6">Revisa mi disponibilidad y envía tu solicitud de reserva.</p>
-    <a href="agenda.html" class="bg-blue-700 text-white font-semibold py-3 px-8 rounded hover:bg-blue-800 transition">Ir a Agenda</a>
-  </section>
-
-  <footer class="bg-white shadow-md py-6 text-center mt-12">
-    <p>&copy; 2025 Lic. Anyuri Vasquez. Todos los derechos reservados.</p>
-  </footer>
-
-<!-- Script: toggle del menú móvil -->
 <script>
   (function(){
     const btn = document.getElementById('menu-toggle');
     const nav = document.getElementById('primary-nav');
-    const mobileClasses = ['absolute','top-16','left-0','w-full','bg-blue-800','flex','flex-col','gap-2','px-4','py-3','shadow-md','z-50'];
-    const linkMobileClasses = ['text-white','font-semibold','py-2'];
-    function cleanupMobileStyles(){
-      nav.classList.remove(...mobileClasses);
-      nav.querySelectorAll('a').forEach(a=>a.classList.remove(...linkMobileClasses));
-    }
+    const mobileClasses = ['absolute','top-16','left-0','w-full','bg-white','flex','flex-col','gap-1','px-5','py-4','shadow-lg','border-t','border-rose-100','z-50'];
+    function cleanupMobileStyles(){ nav.classList.remove(...mobileClasses); }
     if(btn && nav){
       btn.addEventListener('click', function(){
         const wasHidden = nav.classList.contains('hidden');
         nav.classList.toggle('hidden');
         if (window.innerWidth < 768) {
-          if (wasHidden) {
-            nav.classList.add(...mobileClasses);
-            nav.querySelectorAll('a').forEach(a=>a.classList.add(...linkMobileClasses));
-          } else {
-            cleanupMobileStyles();
-          }
+          if (wasHidden) { nav.classList.add(...mobileClasses); }
+          else { cleanupMobileStyles(); }
         }
         this.setAttribute('aria-expanded', (!nav.classList.contains('hidden')).toString());
       });
