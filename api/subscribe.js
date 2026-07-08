@@ -17,7 +17,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const response = await fetch('https://api.brevo.com/v3/contacts', {
+    const brevoRes = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
         'api-key': process.env.CLAVE_API_BREVO,
@@ -27,17 +27,25 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({ email, updateEnabled: true })
     });
 
-    if (response.status === 201 || response.status === 204) {
+    const status = brevoRes.status;
+    let data = {};
+    try { data = await brevoRes.json(); } catch (_) {}
+
+    console.log('Brevo status:', status, 'body:', JSON.stringify(data));
+
+    // 2xx = éxito, o contacto duplicado = también OK
+    if (status >= 200 && status < 300) {
       return res.status(200).json({ ok: true });
     }
-
-    const data = await response.json().catch(() => ({}));
     if (data.code === 'duplicate_parameter') {
       return res.status(200).json({ ok: true, already: true });
     }
 
-    return res.status(500).json({ error: data.message || 'Error al suscribir' });
+    console.error('Brevo error:', status, JSON.stringify(data));
+    return res.status(500).json({ error: data.message || 'Error Brevo ' + status });
+
   } catch (err) {
+    console.error('Fetch error:', err.message);
     return res.status(500).json({ error: 'Error de conexión' });
   }
 };
