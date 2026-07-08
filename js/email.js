@@ -9,12 +9,31 @@
   if (contactForm) {
     contactForm.addEventListener('submit', function(event){
       event.preventDefault();
-      emailjs.sendForm('service_jp2089a','template_0yv0vwp', this)
-      .then(function(){
-        alert("Consulta enviada correctamente!");
-        contactForm.reset();
-      }, function(err){
-        alert("Error al enviar: "+JSON.stringify(err));
+      var btn = contactForm.querySelector('button[type="submit"]');
+      var originalText = btn ? btn.textContent : '';
+      if (btn) { btn.textContent = 'Enviando...'; btn.disabled = true; }
+      fetch('/api/contacto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:    (contactForm.name    ? contactForm.name.value    : (contactForm.querySelector('[name="name"]')    ? contactForm.querySelector('[name="name"]').value    : '')).trim(),
+          email:   (contactForm.email   ? contactForm.email.value   : (contactForm.querySelector('[name="email"]')   ? contactForm.querySelector('[name="email"]').value   : '')).trim(),
+          message: (contactForm.message ? contactForm.message.value : (contactForm.querySelector('[name="message"]') ? contactForm.querySelector('[name="message"]').value : '')).trim()
+        })
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (btn) { btn.textContent = originalText; btn.disabled = false; }
+        if (data.ok) {
+          alert("¡Consulta enviada correctamente! Te responderemos pronto.");
+          contactForm.reset();
+        } else {
+          alert("Error al enviar la consulta. Intenta de nuevo.");
+        }
+      })
+      .catch(function(){
+        if (btn) { btn.textContent = originalText; btn.disabled = false; }
+        alert("Error de conexión. Intenta de nuevo.");
       });
     });
   }
@@ -164,13 +183,37 @@
       hidden = document.getElementById('reject_url');  if (hidden) hidden.value = rejectUrl;
       hidden = document.getElementById('postpone_url');if (hidden) hidden.value = postponeUrl;
 
-      // Enviar con EmailJS usando plantilla de reservas
-      emailjs.sendForm('service_jp2089a','template_gu91hqk', this)
-      .then(function(){
-        alert("Solicitud de reserva enviada. Te contactaremos para confirmar.");
-        reservaForm.reset();
-      }, function(err){
-        alert("Error al enviar la solicitud: "+JSON.stringify(err));
+      // Enviar via Vercel serverless + Brevo (no depende de Gmail OAuth)
+      var submitBtn = reservaForm.querySelector('button[type="submit"]');
+      var originalBtnText = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) { submitBtn.textContent = 'Enviando...'; submitBtn.disabled = true; }
+      fetch('/api/reserva', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: nombre,
+          email: email,
+          fecha: fecha,
+          hora: hora,
+          mensaje: motivo,
+          confirm_url: confirmUrl,
+          reject_url: rejectUrl,
+          postpone_url: postponeUrl
+        })
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (submitBtn) { submitBtn.textContent = originalBtnText; submitBtn.disabled = false; }
+        if (data.ok) {
+          alert("Solicitud de reserva enviada. Te contactaremos para confirmar.");
+          reservaForm.reset();
+        } else {
+          alert("Error al enviar la solicitud. Intenta de nuevo.");
+        }
+      })
+      .catch(function(){
+        if (submitBtn) { submitBtn.textContent = originalBtnText; submitBtn.disabled = false; }
+        alert("Error de conexión. Intenta de nuevo.");
       });
     });
   }
