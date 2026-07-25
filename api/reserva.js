@@ -1,3 +1,10 @@
+const { consultarDisponibilidad } = require('./disponibilidad.js');
+
+function aMinutos(hm) {
+  const [h, m] = String(hm).split(':').map(Number);
+  return (h || 0) * 60 + (m || 0);
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -14,6 +21,24 @@ module.exports = async function handler(req, res) {
 
   if (!nombre || !email || !fecha || !hora) {
     return res.status(400).json({ error: 'Datos incompletos' });
+  }
+
+  // La validación del navegador se puede saltar, así que se vuelve a comprobar
+  // contra el calendario. Si el calendario no responde, se deja pasar la
+  // solicitud: es preferible revisarla a mano que perderla.
+  try {
+    const { ocupadas } = await consultarDisponibilidad(60);
+    const minuto = aMinutos(hora);
+    const choca = ocupadas.some(o =>
+      o.fecha === fecha && minuto >= aMinutos(o.inicio) && minuto < aMinutos(o.fin)
+    );
+    if (choca) {
+      return res.status(409).json({
+        error: 'Esa hora ya está reservada. Por favor elige otra en el calendario.'
+      });
+    }
+  } catch (err) {
+    console.warn('No se pudo verificar el calendario:', err.message);
   }
 
   const accionesHtml = (confirm_url && reject_url && postpone_url) ? `

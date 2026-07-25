@@ -146,6 +146,18 @@
       if (CONFIG.no_laborables && CONFIG.no_laborables.indexOf(fecha) !== -1) { alert('La fecha seleccionada está marcada como no laborable.'); return; }
       if (!inBusinessHours(dateObj, hora, CONFIG.jornada)) { alert('La hora debe estar dentro de la jornada ('+CONFIG.jornada.inicio+' a '+CONFIG.jornada.fin+').'); return; }
 
+      // Choque con una cita ya agendada: esto sí se bloquea.
+      if (window.Disponibilidad && window.Disponibilidad.estaOcupado(fecha, hora)) {
+        alert('Esa hora ya está reservada. Por favor elige otra en el calendario.');
+        return;
+      }
+
+      // Fuera del horario habitual sólo se avisa: la solicitud es válida,
+      // pero conviene que la persona sepa que puede tardar más en confirmarse.
+      if (window.Disponibilidad && window.Disponibilidad.cargado && !window.Disponibilidad.hayAtencion(fecha)) {
+        if (!confirm('Ese día no aparece con atención habitual. Puedes enviar la solicitud igualmente y te confirmaremos por correo. ¿Deseas continuar?')) return;
+      }
+
       // Regla adicional: si la reserva es para HOY, exigir al menos +1 hora desde ahora (redondeado a 15min)
       if (fecha === todayISO()) {
         var now = new Date();
@@ -208,7 +220,8 @@
           alert("Solicitud de reserva enviada. Te contactaremos para confirmar.");
           reservaForm.reset();
         } else {
-          alert("Error al enviar la solicitud. Intenta de nuevo.");
+          // El servidor explica el motivo cuando la hora acaba de ocuparse.
+          alert(data.error || "Error al enviar la solicitud. Intenta de nuevo.");
         }
       })
       .catch(function(){
