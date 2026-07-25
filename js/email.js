@@ -152,10 +152,9 @@
         return;
       }
 
-      // Fuera del horario habitual sólo se avisa: la solicitud es válida,
-      // pero conviene que la persona sepa que puede tardar más en confirmarse.
-      if (window.Disponibilidad && window.Disponibilidad.cargado && !window.Disponibilidad.hayAtencion(fecha)) {
-        if (!confirm('Ese día no aparece con atención habitual. Puedes enviar la solicitud igualmente y te confirmaremos por correo. ¿Deseas continuar?')) return;
+      // Día ya sin huecos: sólo se avisa, la solicitud sigue siendo válida.
+      if (window.Disponibilidad && window.Disponibilidad.cargado && !window.Disponibilidad.quedanHoras(fecha)) {
+        if (!confirm('Ese día ya no tiene horas libres en el calendario. Puedes enviar la solicitud igualmente y te confirmaremos por correo. ¿Deseas continuar?')) return;
       }
 
       // Regla adicional: si la reserva es para HOY, exigir al menos +1 hora desde ahora (redondeado a 15min)

@@ -28,8 +28,8 @@
         return o.fecha === fecha && min >= aMinutos(o.inicio) && min < aMinutos(o.fin);
       });
     },
-    // ¿Es un día en el que normalmente hay atención?
-    hayAtencion: function (fecha) {
+    // ¿Le queda alguna hora libre a ese día?
+    quedanHoras: function (fecha) {
       if (!this.cargado) return true;
       var d = this.dias.find(function (x) { return x.fecha === fecha; });
       return d ? d.atiende : true;
@@ -87,7 +87,7 @@
 
       if (!d.atiende || libres === 0) {
         clases = 'bg-slate-50 border-slate-200 text-slate-400 cursor-not-allowed';
-        contenido = '<span class="text-[10px] leading-tight">sin<br>atención</span>';
+        contenido = '<span class="text-[10px] leading-tight">sin<br>cupos</span>';
       } else if (activo) {
         clases = 'bg-rose-400 border-rose-400 text-white shadow-md';
         contenido = '<span class="text-[10px] font-semibold">' + libres + ' hrs</span>';
@@ -231,8 +231,8 @@
         return;
       }
 
-      if (!window.Disponibilidad.hayAtencion(fecha)) {
-        el.textContent = 'Ese día no hay atención habitual, pero puedes enviar la solicitud.';
+      if (!window.Disponibilidad.quedanHoras(fecha)) {
+        el.textContent = 'Ese día ya no tiene horas libres, pero puedes enviar la solicitud.';
         el.className = 'text-sm mt-1 text-amber-600';
         el.style.display = '';
         if (errorPropio) { campoHora.setCustomValidity(''); errorPropio = false; }

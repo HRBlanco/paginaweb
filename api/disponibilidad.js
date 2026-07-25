@@ -17,9 +17,9 @@ const SLOT = 60;           // duración de cada hueco, en minutos
 const DIAS_POR_DEFECTO = 15;
 const MARGEN_HOY = 60;     // no ofrecer horas a menos de 1 h de ahora
 
-// Si el calendario no tuviera ningún bloque de atención, se usa esto.
+// Horario que se aplica a los días sin bloque propio en el calendario.
+// Coincide con el que anuncia el formulario de la página.
 const JORNADA_FALLBACK = { inicio: '08:00', fin: '21:00' };
-const DIAS_HABILES_FALLBACK = [1, 2, 3, 4, 5]; // lunes a viernes
 
 const NOMBRE_DIA = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
 
@@ -159,7 +159,6 @@ function construirDias(eventos, numDias) {
 
   const jornadas = enRango.filter(e => (e.fin.ts - e.inicio.ts) / 60000 >= MIN_JORNADA);
   const citas    = enRango.filter(e => (e.fin.ts - e.inicio.ts) / 60000 <  MIN_JORNADA);
-  const sinJornadas = jornadas.length === 0;
 
   const dias = [];
 
@@ -181,8 +180,9 @@ function construirDias(eventos, numDias) {
       cierre   = cierre   === null ? fin : Math.max(cierre, fin);
     }
 
-    // Sin ningún bloque en todo el calendario, caemos al horario por defecto.
-    if (apertura === null && sinJornadas && DIAS_HABILES_FALLBACK.includes(diaSemana)) {
+    // Los días sin bloque propio (fin de semana, lunes) también admiten
+    // solicitudes: se les aplica el horario que anuncia la página.
+    if (apertura === null) {
       apertura = aMinutos(JORNADA_FALLBACK.inicio);
       cierre   = aMinutos(JORNADA_FALLBACK.fin);
     }
