@@ -9,17 +9,15 @@ const CALENDAR_ID = process.env.ID_CALENDARIO ||
 
 const TZ = 'America/Santiago';
 
-// Un evento de 4 h o más NO es una cita: es el bloque de horario de atención
-// que Google crea con los "Programas de citas". Esos definen cuándo atiende
-// Anyuri. Los eventos más cortos sí son citas y ocupan la hora.
-const MIN_JORNADA = 240;   // minutos
 const SLOT = 60;           // duración de cada hueco, en minutos
 const DIAS_POR_DEFECTO = 15;
 const MARGEN_HOY = 60;     // no ofrecer horas a menos de 1 h de ahora
 
-// Horario que se aplica a los días sin bloque propio en el calendario.
-// Coincide con el que anuncia el formulario de la página.
-const JORNADA_FALLBACK = { inicio: '08:00', fin: '21:00' };
+// Todo lo que hay en el calendario es tiempo NO disponible, sin importar
+// cuánto dure: tanto las citas sueltas como los bloques largos que Anyuri
+// repite de martes a viernes. La disponibilidad son los huecos que quedan
+// dentro de este horario, que es el que anuncia el formulario de la página.
+const JORNADA = { inicio: '08:00', fin: '21:00' };
 
 const NOMBRE_DIA = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
 
@@ -155,48 +153,17 @@ function construirDias(eventos, numDias) {
   // Sólo interesan los eventos que tocan la ventana que vamos a mostrar.
   const desde = desdeChile(hoyY, hoyM, hoyD, 0, 0);
   const hasta = desde + numDias * 24 * 60 * 60 * 1000;
-  const enRango = eventos.filter(e => e.inicio.ts < hasta && e.fin.ts > desde);
+  const ocupaciones = eventos.filter(e => e.inicio.ts < hasta && e.fin.ts > desde);
 
-  const jornadas = enRango.filter(e => (e.fin.ts - e.inicio.ts) / 60000 >= MIN_JORNADA);
-  const citas    = enRango.filter(e => (e.fin.ts - e.inicio.ts) / 60000 <  MIN_JORNADA);
-
+  const apertura = aMinutos(JORNADA.inicio);
+  const cierre = aMinutos(JORNADA.fin);
   const dias = [];
 
   for (let i = 0; i < numDias; i++) {
     const inicioDia = desdeChile(hoyY, hoyM, hoyD + i, 0, 0);
-    const fechaObj = new Date(inicioDia);
-    const fecha = enChile(fechaObj).fecha;
+    const fecha = enChile(new Date(inicioDia)).fecha;
     const [y, mo, d] = fecha.split('-').map(Number);
-    const finDia = desdeChile(y, mo, d + 1, 0, 0);
     const diaSemana = new Date(Date.UTC(y, mo - 1, d)).getUTCDay();
-
-    // ¿Qué franja atiende ese día? La marcan los bloques del calendario.
-    let apertura = null, cierre = null;
-    for (const j of jornadas) {
-      if (j.inicio.ts >= finDia || j.fin.ts <= inicioDia) continue;
-      const ini = j.inicio.ts <= inicioDia ? 0    : enChile(new Date(j.inicio.ts)).minutos;
-      const fin = j.fin.ts    >= finDia    ? 1440 : enChile(new Date(j.fin.ts)).minutos;
-      apertura = apertura === null ? ini : Math.min(apertura, ini);
-      cierre   = cierre   === null ? fin : Math.max(cierre, fin);
-    }
-
-    // Los días sin bloque propio (fin de semana, lunes) también admiten
-    // solicitudes: se les aplica el horario que anuncia la página.
-    if (apertura === null) {
-      apertura = aMinutos(JORNADA_FALLBACK.inicio);
-      cierre   = aMinutos(JORNADA_FALLBACK.fin);
-    }
-
-    if (apertura === null || cierre === null || cierre - apertura < SLOT) {
-      dias.push({
-        fecha,
-        diaSemana: NOMBRE_DIA[diaSemana],
-        numeroDia: d,
-        atiende: false,
-        slots: []
-      });
-      continue;
-    }
 
     const slots = [];
     for (let m = apertura; m + SLOT <= cierre; m += SLOT) {
@@ -208,7 +175,7 @@ function construirDias(eventos, numDias) {
       // Horas que ya pasaron (o demasiado próximas) no se pueden pedir.
       if (slotIni < ahora + MARGEN_HOY * 60000) {
         estado = 'pasado';
-      } else if (citas.some(c => c.inicio.ts < slotFin && c.fin.ts > slotIni)) {
+      } else if (ocupaciones.some(o => o.inicio.ts < slotFin && o.fin.ts > slotIni)) {
         estado = 'ocupado';
       }
 
@@ -225,18 +192,25 @@ function construirDias(eventos, numDias) {
     });
   }
 
-  // Las citas se listan aparte, incluidos los días sin horario de atención:
-  // Anyuri a veces agenda fuera de su horario habitual y esas horas también
-  // tienen que quedar bloqueadas.
+  // Lista plana de lo ocupado, para revalidar en el servidor. Los eventos que
+  // cruzan la medianoche se parten por día.
   const ocupadas = [];
-  for (const c of citas) {
-    const ini = enChile(new Date(c.inicio.ts));
-    const fin = enChile(new Date(c.fin.ts));
-    ocupadas.push({
-      fecha: ini.fecha,
-      inicio: hhmm(ini.minutos),
-      fin: fin.fecha === ini.fecha ? hhmm(fin.minutos) : '24:00'
-    });
+  for (const o of ocupaciones) {
+    let cursor = Math.max(o.inicio.ts, desde);
+    const tope = Math.min(o.fin.ts, hasta);
+
+    while (cursor < tope) {
+      const p = enChile(new Date(cursor));
+      const [cy, cm, cd] = p.fecha.split('-').map(Number);
+      const finDelDia = desdeChile(cy, cm, cd + 1, 0, 0);
+      if (finDelDia <= cursor) break; // guarda por si el cálculo no avanza
+
+      const trozo = Math.min(tope, finDelDia);
+      const finMin = trozo >= finDelDia ? 1440 : enChile(new Date(trozo)).minutos;
+
+      ocupadas.push({ fecha: p.fecha, inicio: hhmm(p.minutos), fin: hhmm(finMin) });
+      cursor = trozo;
+    }
   }
   ocupadas.sort((a, b) => (a.fecha + a.inicio).localeCompare(b.fecha + b.inicio));
 
@@ -260,8 +234,10 @@ module.exports = async function handler(req, res) {
     const eventos = parsearEventos(ics);
     const { dias, ocupadas } = construirDias(eventos, numDias);
 
-    // Se cachea 5 minutos en el CDN para no consultar a Google en cada visita.
-    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+    // El CDN cachea 5 minutos para no consultar a Google en cada visita, pero
+    // max-age=0 obliga al navegador a revalidar: sin él aplica su propia
+    // heurística y llega a mostrar disponibilidad vieja.
+    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=300, stale-while-revalidate=600');
     return res.status(200).json({
       ok: true,
       zona: TZ,
