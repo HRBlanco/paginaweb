@@ -25,6 +25,7 @@
       .then(function(data){
         if (btn) { btn.textContent = originalText; btn.disabled = false; }
         if (data.ok) {
+          if (window.medirEvento) window.medirEvento('generate_lead', { form_id: 'consulta' });
           alert("¡Consulta enviada correctamente! Te responderemos pronto.");
           contactForm.reset();
         } else {
@@ -56,6 +57,7 @@
       .then(function(r){ return r.json(); })
       .then(function(data){
         if (data.ok) {
+          if (window.medirEvento) window.medirEvento('suscripcion_newsletter');
           if (btn) { btn.textContent = '¡Suscrito!'; }
           newsletterForm.reset();
           setTimeout(function(){ if (btn) { btn.textContent = originalText; btn.disabled = false; } }, 3000);
@@ -216,6 +218,7 @@
       .then(function(data){
         if (submitBtn) { submitBtn.textContent = originalBtnText; submitBtn.disabled = false; }
         if (data.ok) {
+          if (window.medirEvento) window.medirEvento('generate_lead', { form_id: 'reserva' });
           alert("Solicitud de reserva enviada. Te contactaremos para confirmar.");
           reservaForm.reset();
         } else {
